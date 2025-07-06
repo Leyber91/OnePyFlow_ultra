@@ -1,0 +1,78 @@
+flowchart TD
+    classDef mainModule fill:#f96,stroke:#333,stroke-width:2px
+    classDef dataModule fill:#9cf,stroke:#333,stroke-width:1px
+    classDef utilModule fill:#fcf,stroke:#333,stroke-width:1px
+    classDef outputModule fill:#cf9,stroke:#333,stroke-width:1px
+    
+    %% Main Entry Point
+    MainPy[main.py]:::mainModule
+    
+    %% Core OneFlow Modules
+    OneFlowPy[OneFlow/oneflow.py]:::mainModule
+    OneFlowDataSources[OneFlow/oneflow_data_sources.py]:::dataModule
+    OneFlowConcurrency[OneFlow/oneflow_concurrency.py]:::utilModule
+    OneFlowOutput[OneFlow/oneflow_output.py]:::outputModule
+    OneFlowAudit[OneFlow/oneflow_audit.py]:::utilModule
+    
+    %% Authentication
+    AuthPy[utils/authenticate.py]:::utilModule
+    
+    %% Data Retrieval
+    DataRetrievalPy[data_retrieval/data_retrieval.py]:::dataModule
+    PullDockMaster[data_retrieval/pull_dock_master.py]:::dataModule
+    PullGalaxy[data_retrieval/pull_galaxy.py]:::dataModule
+    PullICQA[data_retrieval/pull_icqa.py]:::dataModule
+    PullNecronomicon[data_retrieval/pull_necronomicon_data.py]:::dataModule
+    PullDockFlow[data_retrieval/pull_dockflow_data.py]:::dataModule
+    
+    %% Data Processing
+    DataProcessingPy[data_processing/data_processing.py]:::dataModule
+    ProcessDockMaster[data_processing/process_dock_master_data.py]:::dataModule
+    ProcessGalaxy[data_processing/process_galaxy_data.py]:::dataModule
+    ProcessICQA[data_processing/process_icqa_data.py]:::dataModule
+    ProcessNecronomicon[data_processing/process_necronomicon_data.py]:::dataModule
+    ProcessDockFlow[data_processing/process_dockflow_data.py]:::dataModule
+    
+    %% Special Modules
+    PPRModule[PPR/PPR_FF.py]:::dataModule
+    ALPSModule[ALPS.py]:::dataModule
+    RODEOModule[RODEO.py]:::dataModule
+    
+    %% Main Flow
+    MainPy -->|1. Find params file| MainPy
+    MainPy -->|2. Check for headless mode| MainPy
+    MainPy -->|3. Load auth| AuthPy
+    MainPy -->|4. Call main function| OneFlowPy
+    
+    %% OneFlow Orchestration
+    OneFlowPy -->|Build data sources| OneFlowDataSources
+    OneFlowPy -->|Run concurrent tasks| OneFlowConcurrency
+    OneFlowPy -->|Track execution| OneFlowAudit
+    OneFlowPy -->|Generate output| OneFlowOutput
+    
+    %% Data Sources Configuration
+    OneFlowDataSources -->|Configure DockMaster| DataRetrievalPy
+    OneFlowDataSources -->|Configure Galaxy| DataRetrievalPy
+    OneFlowDataSources -->|Configure ICQA| DataRetrievalPy
+    OneFlowDataSources -->|Configure PPR| PPRModule
+    OneFlowDataSources -->|Configure ALPS| ALPSModule
+    OneFlowDataSources -->|Configure RODEO| RODEOModule
+    
+    %% Data Retrieval
+    DataRetrievalPy -->|Retrieve DockMaster| PullDockMaster
+    DataRetrievalPy -->|Retrieve Galaxy| PullGalaxy
+    DataRetrievalPy -->|Retrieve ICQA| PullICQA
+    DataRetrievalPy -->|Retrieve kNekro| PullNecronomicon
+    DataRetrievalPy -->|Retrieve DockFlow| PullDockFlow
+    
+    %% Data Processing
+    DataRetrievalPy -->|Forward data for processing| DataProcessingPy
+    DataProcessingPy -->|Process DockMaster| ProcessDockMaster
+    DataProcessingPy -->|Process Galaxy| ProcessGalaxy
+    DataProcessingPy -->|Process ICQA| ProcessICQA
+    DataProcessingPy -->|Process kNekro| ProcessNecronomicon
+    DataProcessingPy -->|Process DockFlow| ProcessDockFlow
+    
+    %% Results Collection
+    OneFlowConcurrency -->|Collect results| OneFlowPy
+    OneFlowPy -->|Format JSON| OneFlowOutput

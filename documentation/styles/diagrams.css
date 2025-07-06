@@ -1,0 +1,493 @@
+/* Diagram Styles for OnePyFlow Documentation */
+
+/* Architecture Diagram */
+.architecture-diagram {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    margin: 2rem 0;
+    overflow: hidden;
+}
+
+.architecture-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Module Node Styles */
+.module-node {
+    position: absolute;
+    background-color: var(--bg-primary);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 12px;
+    min-width: 150px;
+    text-align: center;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.module-node:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-lg);
+}
+
+.module-node.active {
+    background-color: var(--primary-light);
+    color: white;
+    transform: scale(1.05);
+    z-index: 20;
+}
+
+.module-node.active .module-title {
+    color: white;
+}
+
+.module-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.module-description {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.module-node.active .module-description {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* Module Connections */
+.module-connection {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.connection-line {
+    stroke: var(--primary-color);
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 5, 5;
+    animation: dashAnimation 30s linear infinite;
+}
+
+.connection-label {
+    font-size: 0.7rem;
+    text-anchor: middle;
+    fill: var(--text-secondary);
+    dominant-baseline: middle;
+}
+
+/* Module Groups */
+.module-group {
+    position: absolute;
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    background-color: rgba(0, 102, 204, 0.05);
+    z-index: 1;
+}
+
+.group-label {
+    position: absolute;
+    top: -12px;
+    left: 20px;
+    background-color: var(--bg-primary);
+    padding: 0 10px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    border-radius: 4px;
+}
+
+/* Animation for dashed lines */
+@keyframes dashAnimation {
+    to {
+        stroke-dashoffset: -1000;
+    }
+}
+
+/* Data Flow Diagram */
+.data-flow-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.data-flow-step {
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.data-flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 20px;
+    background-color: var(--primary-color);
+}
+
+.data-flow-step:not(:last-child)::before {
+    content: '↓';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    z-index: 5;
+}
+
+.data-flow-content {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--shadow-md);
+}
+
+.data-flow-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+
+.data-flow-title i {
+    margin-right: 10px;
+}
+
+.data-flow-description {
+    margin-bottom: 15px;
+}
+
+.data-flow-content.active {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 15px rgba(255, 153, 0, 0.3);
+}
+
+.data-flow-content.active .data-flow-title {
+    color: var(--secondary-color);
+}
+
+/* Component Relationship Diagram */
+.component-relationship {
+    width: 100%;
+    min-height: 400px;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.component-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.component-box {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.component-box:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.component-box.highlighted {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 10px rgba(0, 102, 204, 0.3);
+}
+
+.component-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.component-info {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.component-connection {
+    position: absolute;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* Process Flow Diagram */
+.process-flow {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+    overflow-x: auto;
+    padding-bottom: 20px;
+}
+
+.process-step {
+    flex: 1;
+    min-width: 150px;
+    max-width: 200px;
+    padding: 15px;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    text-align: center;
+    position: relative;
+    margin: 0 10px;
+}
+
+.process-step::after {
+    content: '→';
+    position: absolute;
+    right: -15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    z-index: 5;
+}
+
+.process-step:last-child::after {
+    display: none;
+}
+
+.process-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.process-description {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Interactive Diagrams */
+.interactive-controls {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.control-button {
+    background-color: var(--bg-light);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.2s;
+}
+
+.control-button:hover {
+    background-color: var(--primary-light);
+    color: white;
+}
+
+.control-button.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.diagram-legend {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    margin-right: 5px;
+    border-radius: 3px;
+}
+
+.legend-core {
+    background-color: var(--primary-color);
+}
+
+.legend-retrieval {
+    background-color: var(--info-color);
+}
+
+.legend-processing {
+    background-color: var(--success-color);
+}
+
+.legend-utility {
+    background-color: var(--warning-color);
+}
+
+.legend-feature {
+    background-color: var(--secondary-color);
+}
+
+/* Tooltip */
+.diagram-tooltip {
+    position: absolute;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 10px;
+    box-shadow: var(--shadow-md);
+    max-width: 250px;
+    z-index: 100;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.diagram-tooltip.visible {
+    opacity: 1;
+}
+
+.tooltip-title {
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+.tooltip-content {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* Sequence Diagram */
+.sequence-diagram {
+    width: 100%;
+    min-height: 300px;
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+.sequence-actor {
+    display: inline-block;
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 10px;
+    min-width: 100px;
+    text-align: center;
+    margin: 0 40px;
+}
+
+.sequence-lifeline {
+    width: 1px;
+    background-color: var(--border-color);
+    margin: 10px auto;
+    height: 300px;
+    position: relative;
+}
+
+.sequence-message {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+}
+
+.sequence-message::before,
+.sequence-message::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.sequence-message::before {
+    left: -100px;
+    width: 100px;
+}
+
+.sequence-message::after {
+    right: -100px;
+    width: 100px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .architecture-diagram {
+        min-height: 700px;
+    }
+    
+    .module-node {
+        min-width: 120px;
+        padding: 8px;
+    }
+    
+    .module-title {
+        font-size: 0.9rem;
+    }
+    
+    .module-description {
+        font-size: 0.75rem;
+    }
+    
+    .data-flow-step {
+        max-width: 100%;
+    }
+    
+    .process-flow {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .process-step {
+        margin-bottom: 30px;
+        max-width: 100%;
+        width: 100%;
+    }
+    
+    .process-step::after {
+        content: '↓';
+        right: unset;
+        bottom: -25px;
+        top: unset;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .component-box {
+        width: 160px;
+    }
+}

@@ -1,0 +1,413 @@
+<h2>Data Retrieval Module</h2>
+
+<div class="module-header">
+    <div class="module-badges">
+        <span class="badge badge-retrieval">Retrieval</span>
+        <span class="badge badge-core">Core</span>
+    </div>
+    <div class="module-meta">
+        <span class="meta-item"><i class="fas fa-code"></i> data_retrieval.py</span>
+        <span class="meta-item"><i class="fas fa-calendar"></i> Last Updated: March 2, 2025</span>
+    </div>
+</div>
+
+<p class="module-description">
+    The <code>data_retrieval.py</code> module is responsible for orchestrating the retrieval of data from various sources. 
+    It provides a unified interface for retrieving data from different systems while handling authentication, error recovery, 
+    and session management.
+</p>
+
+<div class="section-divider"></div>
+
+<h3>Module Overview</h3>
+
+<p>
+    This module serves as the primary entry point for retrieving data from various systems used in fulfillment centers. 
+    It dynamically dispatches retrieval requests to specialized puller modules based on the requested function name.
+</p>
+
+<div class="info-box">
+    <div class="info-title"><i class="fas fa-info-circle"></i> Key Information</div>
+    <ul>
+        <li>Supports multiple data sources including DockMaster, Galaxy, ICQA, and more</li>
+        <li>Handles authentication and session management</li>
+        <li>Implements retry logic for common network failures</li>
+        <li>Provides consistent error handling across data sources</li>
+    </ul>
+</div>
+
+<div class="section-divider"></div>
+
+<h3>Main Function: retrieve_data</h3>
+
+<p>
+    The <code>retrieve_data</code> function is the primary entry point for retrieving data from various sources.
+</p>
+
+<div class="code-block">
+    <button class="copy-btn" data-clipboard-target="#retrieve-data-code">
+        <i class="fas fa-copy"></i> Copy
+    </button>
+    <pre><code class="language-python" id="retrieve-data-code">def retrieve_data(func_name, fc, start_date, end_date, midway_session, cookie_jar, session=None, mp=None):
+    """
+    Retrieves data based on the function name, ensuring proper session handling.
+    
+    Parameters:
+        func_name (str): Name of the function to execute.
+        fc (str): Fulfillment Center code (or Site code for ALPS_RC_Sort).
+        start_date: Start date for data retrieval (or parsed_sos for ALPS_RC_Sort).
+        end_date: End date for data retrieval (not used for ALPS_RC_Sort).
+        midway_session: Midway session information (not used for ALPS_RC_Sort).
+        cookie_jar: Cookie jar with authentication cookies (not used for ALPS_RC_Sort).
+        session (requests.Session, optional): Existing session to use.
+        mp (str, optional): Marketplace code.
+        
+    Returns:
+        Data retrieved from the respective function.
+    """
+    try:
+        # Create session if not provided.
+        if session is None:
+            session = Authentication().setup_session()
+            logger.info("New session created for data retrieval")
+        
+        # Update session cookies with cookie jar if provided.
+        if cookie_jar:
+            session.cookies.update(cookie_jar)
+
+        # Map functions to their handlers with appropriate parameters.
+        # Note: For ALPS_RC_Sort, we assume:
+        #   - fc is used as the Site code.
+        #   - start_date is a datetime object (parsed_sos).
+        func_mapping = {
+            'DockMaster': lambda: pull_dock_master(fc, start_date, end_date, midway_session, cookie_jar),
+            'DockMaster2': lambda: pull_dock_master_2(fc, midway_session, cookie_jar),
+            'Galaxy': lambda: pull_galaxy(session, fc, start_date),
+            'Galaxy2': lambda: pull_galaxy2(session, fc, start_date),
+            'ICQA': lambda: pull_icqa(fc, 
+                                    start_date if isinstance(start_date, datetime) else datetime.now(), 
+                                    midway_session, cookie_jar),
+            'DockFlow': lambda: pull_dockflow_data(fc, midway_session, cookie_jar),
+            'F2P': lambda: pull_f2p_data(session, fc, mp, cookie_jar),
+            'kNekro': lambda: pull_necronomicon_data(fc, start_date, session, cookie_jar),
+            'SSP': lambda: pull_ssp_data(fc, start_date, end_date, session, cookie_jar),
+            'ALPS_RC_Sort': lambda: pull_rc_sort_data(session, fc, start_date),
+            'QuipCSV': lambda: pull_quip_csv_data()
+        }
+
+        # Check if function exists in mapping.
+        if func_name not in func_mapping:
+            logger.error(f"No data retrieval function defined for {func_name}")
+            raise ValueError(f"No data retrieval function defined for {func_name}")
+
+        # Execute the function and return its result.
+        logger.info(f"Executing data retrieval for: {func_name}")
+        result = func_mapping[func_name]()
+        
+        if result is None:
+            logger.warning(f"No data retrieved for {func_name}")
+        else:
+            logger.info(f"Successfully retrieved data for {func_name}")
+        
+        return result
+
+    except Exception as e:
+        logger.error(f"Error in retrieve_data for {func_name}: {e}")
+        logger.debug("Exception details:", exc_info=True)
+        return None</code></pre>
+</div>
+
+<div class="section-divider"></div>
+
+<h3>Supported Data Sources</h3>
+
+<div class="data-sources-grid">
+    <div class="data-source-card">
+        <div class="data-source-icon"><i class="fas fa-truck-loading"></i></div>
+        <h4>DockMaster</h4>
+        <p>Retrieves appointment data for dock operations</p>
+        <div class="data-source-meta">
+            <span class="source-api">REST API</span>
+            <span class="source-auth">Midway Auth</span>
+        </div>
+    </div>
+    
+    <div class="data-source-card">
+        <div class="data-source-icon"><i class="fas fa-chart-line"></i></div>
+        <h4>Galaxy</h4>
+        <p>Retrieves performance metrics and path percentages</p>
+        <div class="data-source-meta">
+            <span class="source-api">REST API</span>
+            <span class="source-auth">SSPI Auth</span>
+        </div>
+    </div>
+    
+    <div class="data-source-card">
+        <div class="data-source-icon"><i class="fas fa-check-square"></i></div>
+        <h4>ICQA</h4>
+        <p>Retrieves inventory control and quality assurance data</p>
+        <div class="data-source-meta">
+            <span class="source-api">S3 CSV</span>
+            <span class="source-auth">Midway Auth</span>
+        </div>
+    </div>
+    
+    <div class="data-source-card">
+        <div class="data-source-icon"><i class="fas fa-sitemap"></i></div>
+        <h4>DockFlow</h4>
+        <p>Retrieves dock flow and workcell information</p>
+        <div class="data-source-meta">
+            <span class="source-api">GraphQL</span>
+            <span class="source-auth">Midway Auth</span>
+        </div>
+    </div>
+    
+    <div class="data-source-card">
+        <div class="data-source-icon"><i class="fas fa-arrows-alt-h"></i></div>
+        <h4>F2P</h4>
+        <p>Retrieves Flow to Promise data</p>
+        <div class="data-source-meta">
+            <span class="source-api">REST API</span>
+            <span class="source-auth">Session Auth</span>
+        </div>
+    </div>
+    
+    <div class="data-source-card">
+        <div class="data-source-icon"><i class="fas fa-book"></i></div>
+        <h4>Necronomicon</h4>
+        <p>Retrieves productivity data</p>
+        <div class="data-source-meta">
+            <span class="source-api">Form POST</span>
+            <span class="source-auth">Kerberos Auth</span>
+        </div>
+    </div>
+</div>
+
+<div class="section-divider"></div>
+
+<h3>Error Handling</h3>
+
+<p>
+    The module implements comprehensive error handling to ensure robustness when dealing with various data sources
+    that may experience temporary outages or authentication issues.
+</p>
+
+<div class="expandable-section">
+    <div class="expandable-header">
+        <span>Common Error Scenarios</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <div class="expandable-content">
+        <table>
+            <thead>
+                <tr>
+                    <th>Error Type</th>
+                    <th>Cause</th>
+                    <th>Handling</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Authentication Failure</td>
+                    <td>Expired Midway cookies or SSPI token</td>
+                    <td>Attempt to refresh authentication and retry</td>
+                </tr>
+                <tr>
+                    <td>Network Timeout</td>
+                    <td>Slow response from data source</td>
+                    <td>Implement retry with exponential backoff</td>
+                </tr>
+                <tr>
+                    <td>Resource Not Found</td>
+                    <td>Invalid FC code or date range</td>
+                    <td>Log error and return None</td>
+                </tr>
+                <tr>
+                    <td>API Changes</td>
+                    <td>Changes in data source API</td>
+                    <td>Catch parsing exceptions and log detailed information</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="section-divider"></div>
+
+<h3>Usage Example</h3>
+
+<p>
+    The following example demonstrates how to use the <code>retrieve_data</code> function to retrieve data from DockMaster.
+</p>
+
+<div class="code-block">
+    <button class="copy-btn" data-clipboard-target="#data-retrieval-example">
+        <i class="fas fa-copy"></i> Copy
+    </button>
+    <pre><code class="language-python" id="data-retrieval-example">from data_retrieval import retrieve_data
+from utils.authenticate import Authentication
+from datetime import datetime
+
+# Initialize authentication
+auth = Authentication()
+auth.refresh_cookie_if_needed(max_hours=4)
+midway_session, cookie_jar = auth.get_midway_session()
+session = auth.session
+
+# Define parameters
+fc = "ZAZ1"
+start_date = datetime(2025, 1, 1)
+end_date = datetime(2025, 1, 2)
+
+# Retrieve data from DockMaster
+dock_master_data = retrieve_data(
+    "DockMaster",
+    fc,
+    start_date,
+    end_date,
+    midway_session,
+    cookie_jar,
+    session
+)
+
+if dock_master_data:
+    # Process the data
+    appointment_list = dock_master_data.get("AppointmentList", [])
+    print(f"Retrieved {len(appointment_list)} appointments")
+else:
+    print("Failed to retrieve DockMaster data")</code></pre>
+</div>
+
+<div class="section-divider"></div>
+
+<h3>Related Files</h3>
+
+<div class="file-list">
+    <div class="file-item">
+        <div class="file-icon"><i class="fas fa-file-code"></i></div>
+        <div class="file-details">
+            <div class="file-name">pull_dock_master.py</div>
+            <div class="file-description">Retrieves data from DockMaster</div>
+        </div>
+    </div>
+    <div class="file-item">
+        <div class="file-icon"><i class="fas fa-file-code"></i></div>
+        <div class="file-details">
+            <div class="file-name">pull_galaxy.py</div>
+            <div class="file-description">Retrieves data from Galaxy</div>
+        </div>
+    </div>
+    <div class="file-item">
+        <div class="file-icon"><i class="fas fa-file-code"></i></div>
+        <div class="file-details">
+            <div class="file-name">pull_icqa.py</div>
+            <div class="file-description">Retrieves ICQA data</div>
+        </div>
+    </div>
+    <div class="file-item">
+        <div class="file-icon"><i class="fas fa-file-code"></i></div>
+        <div class="file-details">
+            <div class="file-name">pull_dockflow_data.py</div>
+            <div class="file-description">Retrieves DockFlow data</div>
+        </div>
+    </div>
+    <div class="file-item">
+        <div class="file-icon"><i class="fas fa-file-code"></i></div>
+        <div class="file-details">
+            <div class="file-name">pull_f2p_data.py</div>
+            <div class="file-description">Retrieves F2P data</div>
+        </div>
+    </div>
+    <div class="file-item">
+        <div class="file-icon"><i class="fas fa-file-code"></i></div>
+        <div class="file-details">
+            <div class="file-name">pull_necronomicon_data.py</div>
+            <div class="file-description">Retrieves Necronomicon data</div>
+        </div>
+    </div>
+</div>
+
+<div class="section-divider"></div>
+
+<h3>Flow Diagram</h3>
+
+<p>
+    The following diagram illustrates the data flow through the data retrieval module.
+</p>
+
+<div class="diagram">
+    <img src="modules/data_retrieval/diagrams/data_flow.svg" alt="Data Retrieval Flow Diagram">
+</div>
+
+<div class="section-divider"></div>
+
+<h3>Module Index</h3>
+
+<div class="module-index">
+    <table>
+        <thead>
+            <tr>
+                <th>Module</th>
+                <th>Description</th>
+                <th>Dependencies</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>pull_dock_master.py</td>
+                <td>Retrieves data from DockMaster</td>
+                <td>requests</td>
+            </tr>
+            <tr>
+                <td>pull_dock_master_2.py</td>
+                <td>Retrieves data from DockMaster2</td>
+                <td>requests</td>
+            </tr>
+            <tr>
+                <td>pull_galaxy.py</td>
+                <td>Retrieves data from Galaxy</td>
+                <td>requests, utils.parse_json_response</td>
+            </tr>
+            <tr>
+                <td>pull_galaxy2.py</td>
+                <td>Retrieves data from Galaxy2</td>
+                <td>requests, utils.parse_json_response</td>
+            </tr>
+            <tr>
+                <td>pull_icqa.py</td>
+                <td>Retrieves ICQA data</td>
+                <td>requests, utils.get_fiscal_week</td>
+            </tr>
+            <tr>
+                <td>pull_dockflow_data.py</td>
+                <td>Retrieves DockFlow data</td>
+                <td>utils.authenticate_with_dockflow, utils.get_graphql_endpoint</td>
+            </tr>
+            <tr>
+                <td>pull_f2p_data.py</td>
+                <td>Retrieves F2P data</td>
+                <td>requests, pandas</td>
+            </tr>
+            <tr>
+                <td>pull_necronomicon_data.py</td>
+                <td>Retrieves Necronomicon data</td>
+                <td>requests, utils.get_csrf_token</td>
+            </tr>
+            <tr>
+                <td>pull_ssp_data.py</td>
+                <td>Retrieves SSP data</td>
+                <td>requests, pandas</td>
+            </tr>
+            <tr>
+                <td>pull_rc_sort.py</td>
+                <td>Retrieves RC Sort data</td>
+                <td>requests, BeautifulSoup</td>
+            </tr>
+            <tr>
+                <td>pull_quip_csv_data.py</td>
+                <td>Retrieves Quip CSV data</td>
+                <td>requests, csv</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

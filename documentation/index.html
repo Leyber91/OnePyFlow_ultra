@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OnePyFlow Documentation</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/code-highlighting.css">
+    <link rel="stylesheet" href="styles/diagrams.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo-container">
+                    <img src="images/onepyflow-logo.svg" alt="OnePyFlow Logo" class="logo">
+                </div>
+                <h1>OnePyFlow</h1>
+                <p class="version">Version 1.0</p>
+            </div>
+            
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Search documentation..." class="search-input">
+                <div id="search-results" class="search-results"></div>
+            </div>
+            
+            <nav class="navigation">
+                <ul class="nav-list" id="module-navigation">
+                    <li class="nav-item">
+                        <a href="#overview" class="nav-link active" data-section="overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#architecture" class="nav-link" data-section="architecture">Architecture</a>
+                    </li>
+                    <li class="nav-item has-subnav">
+                        <a href="#core-modules" class="nav-link" data-section="core-modules">Core Modules</a>
+                        <ul class="nav-sublist">
+                            <li class="nav-subitem">
+                                <a href="#oneflow-main" class="nav-link" data-section="oneflow-main">oneflow.py</a>
+                            </li>
+                            <li class="nav-subitem">
+                                <a href="#oneflow-audit" class="nav-link" data-section="oneflow-audit">oneflow_audit.py</a>
+                            </li>
+                            <li class="nav-subitem">
+                                <a href="#oneflow-concurrency" class="nav-link" data-section="oneflow-concurrency">oneflow_concurrency.py</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-subnav">
+                        <a href="#data-retrieval" class="nav-link" data-section="data-retrieval">Data Retrieval</a>
+                        <ul class="nav-sublist">
+                            <li class="nav-subitem">
+                                <a href="#retrieval-overview" class="nav-link" data-section="retrieval-overview">Overview</a>
+                            </li>
+                            <li class="nav-subitem">
+                                <a href="#retrieval-modules" class="nav-link" data-section="retrieval-modules">Modules</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item has-subnav">
+                        <a href="#data-processing" class="nav-link" data-section="data-processing">Data Processing</a>
+                        <ul class="nav-sublist">
+                            <li class="nav-subitem">
+                                <a href="#processing-overview" class="nav-link" data-section="processing-overview">Overview</a>
+                            </li>
+                            <li class="nav-subitem">
+                                <a href="#processing-modules" class="nav-link" data-section="processing-modules">Modules</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#feature-modules" class="nav-link" data-section="feature-modules">Feature Modules</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#utilities" class="nav-link" data-section="utilities">Utilities</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#gui" class="nav-link" data-section="gui">GUI Components</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#getting-started" class="nav-link" data-section="getting-started">Getting Started</a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <button id="toggle-theme" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                    <span>Dark Mode</span>
+                </button>
+            </div>
+        </aside>
+        
+        <main class="content" id="content-container">
+            <!-- Overview Section -->
+            <section id="overview" class="content-section active">
+                <h2>OnePyFlow Overview</h2>
+                <div class="section-intro">
+                    <p>
+                        OnePyFlow is a comprehensive data collection and processing system designed for fulfillment centers. 
+                        It orchestrates the retrieval of data from various sources, processes it, and outputs structured 
+                        results for analysis.
+                    </p>
+                    <p>
+                        The system is built around a core orchestration module (<code>oneflow.py</code>) that coordinates 
+                        the execution of various data retrieval and processing tasks concurrently to improve performance.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Concurrent Processing</h3>
+                        <p>Retrieve and process data from multiple sources simultaneously for improved performance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-database feature-icon"></i>
+                        <h3>Multiple Data Sources</h3>
+                        <p>Connect to various data systems including DockMaster, Galaxy, ICQA, and more.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-file-code feature-icon"></i>
+                        <h3>Structured Output</h3>
+                        <p>Generate standardized JSON output for easy integration with analysis tools.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-desktop feature-icon"></i>
+                        <h3>User-Friendly GUI</h3>
+                        <p>Intuitive graphical interface for configuration and execution.</p>
+                    </div>
+                </div>
+
+                <div class="cta-container">
+                    <a href="#getting-started" class="cta-button">
+                        Get Started
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#architecture" class="secondary-button">
+                        View Architecture
+                        <i class="fas fa-project-diagram"></i>
+                    </a>
+                </div>
+            </section>
+
+            <!-- Architecture Section -->
+            <section id="architecture" class="content-section">
+                <h2>System Architecture</h2>
+                <p>
+                    OnePyFlow follows a modular architecture designed for extensibility and maintainability.
+                    The system is organized into several key components that work together to collect,
+                    process, and output data.
+                </p>
+
+                <div class="architecture-diagram" id="architecture-diagram">
+                    <!-- Interactive diagram will be rendered here by JS -->
+                    <div class="diagram-loading">Loading architecture diagram...</div>
+                </div>
+
+                <div class="architecture-description">
+                    <h3>Core Components</h3>
+                    <ul class="component-list">
+                        <li>
+                            <span class="component-name">Orchestration Layer</span>
+                            <p>Manages the execution of data collection and processing tasks.</p>
+                        </li>
+                        <li>
+                            <span class="component-name">Data Retrieval Layer</span>
+                            <p>Handles the collection of data from various sources.</p>
+                        </li>
+                        <li>
+                            <span class="component-name">Data Processing Layer</span>
+                            <p>Transforms and structures the collected data.</p>
+                        </li>
+                        <li>
+                            <span class="component-name">Feature Modules</span>
+                            <p>Specialized modules for specific data sources and processing tasks.</p>
+                        </li>
+                        <li>
+                            <span class="component-name">Utility Layer</span>
+                            <p>Common utilities used across the system.</p>
+                        </li>
+                        <li>
+                            <span class="component-name">GUI Layer</span>
+                            <p>User interface for configuration and execution.</p>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="data-flow">
+                    <h3>Data Flow</h3>
+                    <div class="flow-diagram">
+                        <div class="flow-step">
+                            <div class="flow-content">
+                                <div class="flow-title">1. Initialization</div>
+                                <div class="flow-description">
+                                    User specifies the site, datetime range, and modules to execute.
+                                </div>
+                                <div class="flow-code">
+                                    OneFlow_MainFunction(Site="ZAZ1", SOSdatetime="2024-01-01 06:00:00", EOSdatetime="2024-01-01 14:30:00", ...)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-content">
+                                <div class="flow-title">2. Authentication</div>
+                                <div class="flow-description">
+                                    System authenticates with various services.
+                                </div>
+                                <div class="flow-code">
+                                    auth = Authentication()
+                                    auth.refresh_cookie_if_needed(max_hours=4)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-content">
+                                <div class="flow-title">3. Concurrent Data Retrieval</div>
+                                <div class="flow-description">
+                                    Multiple data sources are queried simultaneously.
+                                </div>
+                                <div class="flow-code">
+                                    partial_results, errors = run_all_tasks(DATA_SOURCES, max_workers, auth, reauth_lock)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-content">
+                                <div class="flow-title">4. Data Processing</div>
+                                <div class="flow-description">
+                                    Raw data is transformed into structured formats.
+                                </div>
+                                <div class="flow-code">
+                                    processed_data = process_data(func_name, raw_data)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flow-step">
+                            <div class="flow-content">
+                                <div class="flow-title">5. Output Generation</div>
+                                <div class="flow-description">
+                                    Results are compiled into a structured JSON output.
+                                </div>
+                                <div class="flow-code">
+                                    final_json_filepath = merge_and_write_json(outputJSON, Site, shift, plan_type, parsed_sos)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Core Modules Section -->
+            <section id="oneflow-main" class="content-section">
+                <h2>Core Module: oneflow.py</h2>
+                
+                <div class="module-header">
+                    <div class="module-badges">
+                        <span class="badge badge-core">Core</span>
+                        <span class="badge badge-orchestration">Orchestration</span>
+                    </div>
+                    <div class="module-meta">
+                        <span class="meta-item"><i class="fas fa-code"></i> oneflow.py</span>
+                    </div>
+                </div>
+
+                <p class="module-description">
+                    The <code>oneflow.py</code> module is the central orchestration component of the OnePyFlow system.
+                    It coordinates the execution of data retrieval and processing tasks, manages authentication, and
+                    handles the generation of output files.
+                </p>
+
+                <div class="code-example">
+                    <h3>Main Function</h3>
+                    <p>
+                        The <code>OneFlow_MainFunction</code> is the primary entry point for the system.
+                        It takes parameters for the site, date range, and modules to execute.
+                    </p>
+                    <div class="code-block">
+                        <button class="copy-btn" data-clipboard-target="#oneflow-main-code">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code class="language-python" id="oneflow-main-code">def OneFlow_MainFunction(Site: str, SOSdatetime: str, EOSdatetime: str,
+                         plan_type: str, shift: str,
+                         modules=None, max_workers=5, external_auth=None,
+                         return_json=False):
+    """
+    Orchestrates data collection with concurrency and robust re-auth on SSPI/cookie error.
+
+    The final JSON includes top-level data and also an 'Audit' section, which:
+      - Tracks the *latest* run info in top-level fields (Timestamp, ExecutionTimeSeconds, etc.)
+      - Optionally accumulates all runs in 'Audit["History"]' if you want repeated calls.
+    """
+    logger.info("Starting OneFlow_MainFunction (concurrent + re-auth).")
+
+    if modules is None:
+        modules = []
+
+    start_time = time.time()
+    error_list = []
+    partial_results = {}
+    final_json_filepath = None
+
+    # Authentication setup
+    if external_auth:
+        auth = external_auth
+        logger.info("[AUTH] Using external_auth => skipping refresh_cookie_if_needed.")
+    else:
+        logger.info("[AUTH] Creating new Authentication => refresh if older than 4h.")
+        from utils.authenticate import Authentication
+        auth = Authentication()
+        try:
+            auth.refresh_cookie_if_needed(max_hours=4)
+            auth._load_cookie()
+        except Exception as auth_error:
+            msg = f"Authentication failed: {auth_error}"
+            logger.error(msg, exc_info=True)
+            error_list.append({
+                "Function": "Authentication",
+                "ErrorFlag": True,
+                "ErrorName": f"Authentication_Error: {auth_error}"
+            })
+            return None
+
+    session = auth.session
+    midway_session, cookie_jar = auth.get_midway_session()
+    user_login = auth.get_os_username()
+
+    # Parameters & date parsing
+    params = get_parameters(Site, FC_TO_COUNTRY)
+    fc = params['FC']
+    mp = params['MP']
+    default_start_date = params['StartDate']
+    default_end_date = pd.Timestamp.now().strftime("%Y-%m-%d")
+    current_date = pd.Timestamp.now()
+
+    # ... (rest of the function)</code></pre>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Key Components</h3>
+                    <div class="component-cards">
+                        <div class="component-card">
+                            <h4>Authentication</h4>
+                            <p>
+                                Manages the authentication process for accessing various data services.
+                                Handles cookie refresh and session management.
+                            </p>
+                        </div>
+                        <div class="component-card">
+                            <h4>Data Source Configuration</h4>
+                            <p>
+                                Builds the list of data sources based on the requested modules.
+                                Configures parameters for each data source.
+                            </p>
+                        </div>
+                        <div class="component-card">
+                            <h4>Concurrent Execution</h4>
+                            <p>
+                                Manages the concurrent execution of data retrieval and processing tasks.
+                                Handles errors and retries when necessary.
+                            </p>
+                        </div>
+                        <div class="component-card">
+                            <h4>Output Generation</h4>
+                            <p>
+                                Compiles the results from various modules into a structured JSON output.
+                                Includes audit information and execution metrics.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="subsection">
+                    <h3>Function Reference</h3>
+                    <table class="function-reference">
+                        <thead>
+                            <tr>
+                                <th>Function</th>
+                                <th>Description</th>
+                                <th>Parameters</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>OneFlow_MainFunction</td>
+                                <td>Main entry point for the system.</td>
+                                <td>
+                                    <ul>
+                                        <li><code>Site</code>: Site code (e.g., "ZAZ1")</li>
+                                        <li><code>SOSdatetime</code>: Start of shift datetime</li>
+                                        <li><code>EOSdatetime</code>: End of shift datetime</li>
+                                        <li><code>plan_type</code>: Plan type</li>
+                                        <li><code>shift</code>: Shift code</li>
+                                        <li><code>modules</code>: List of modules to execute</li>
+                                        <li><code>max_workers</code>: Maximum concurrent workers</li>
+                                        <li><code>external_auth</code>: External authentication object</li>
+                                        <li><code>return_json</code>: Whether to return JSON instead of filepath</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="subsection">
+                    <h3>Usage Example</h3>
+                    <div class="code-block">
+                        <button class="copy-btn" data-clipboard-target="#oneflow-usage-code">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <pre><code class="language-python" id="oneflow-usage-code"># Example usage of OneFlow_MainFunction
+from OneFlow.oneflow import OneFlow_MainFunction
+
+# Define parameters
+site_code = "ZAZ1"
+sos_datetime = "2024-01-01 06:00:00"
+eos_datetime = "2024-01-01 14:30:00"
+plan_type = "Prior-Day"
+shift = "ES"
+
+# Define modules to execute
+modules = ["DockMaster", "Galaxy", "ICQA", "PPR"]
+
+# Execute OneFlow
+result = OneFlow_MainFunction(
+    Site=site_code,
+    SOSdatetime=sos_datetime,
+    EOSdatetime=eos_datetime,
+    plan_type=plan_type,
+    shift=shift,
+    modules=modules
+)
+
+print(f"Execution complete. Output at: {result}")</code></pre>
+                    </div>
+                </div>
+
+                <div class="related-modules">
+                    <h3>Related Modules</h3>
+                    <ul class="related-list">
+                        <li><a href="#oneflow-audit">oneflow_audit.py</a> - Audit and execution tracking</li>
+                        <li><a href="#oneflow-concurrency">oneflow_concurrency.py</a> - Concurrent task execution</li>
+                        <li><a href="#oneflow-output">oneflow_output.py</a> - Output generation and file writing</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Content for other sections will be loaded dynamically -->
+        </main>
+    </div>
+
+    <!-- Modal for expanded views -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.8/clipboard.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/diagrams.js"></script>
+    <script src="js/code-utils.js"></script>
+</body>
+</html>

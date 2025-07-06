@@ -1,0 +1,313 @@
+/* Code Highlighting Styles for OnePyFlow Documentation */
+
+/* Base Styles for Code Blocks */
+pre code {
+    display: block;
+    padding: 1em;
+    overflow-x: auto;
+    line-height: 1.6;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre;
+    font-size: 0.9em;
+}
+
+/* Light Theme Syntax Highlighting */
+:root {
+    --code-background: #f8f9fa;
+    --code-text: #333;
+    --code-comment: #6a737d;
+    --code-keyword: #d73a49;
+    --code-string: #008000;
+    --code-number: #005cc5;
+    --code-function: #6f42c1;
+    --code-class: #e36209;
+    --code-variable: #24292e;
+    --code-operator: #d73a49;
+    --code-builtin: #005cc5;
+    --code-property: #005cc5;
+    --code-regex: #032f62;
+    --code-punctuation: #24292e;
+}
+
+/* Dark Theme Syntax Highlighting */
+[data-theme="dark"] {
+    --code-background: #2d333b;
+    --code-text: #e6e6e6;
+    --code-comment: #768390;
+    --code-keyword: #ff7b72;
+    --code-string: #a5d6ff;
+    --code-number: #79c0ff;
+    --code-function: #d2a8ff;
+    --code-class: #ffa657;
+    --code-variable: #c9d1d9;
+    --code-operator: #ff7b72;
+    --code-builtin: #79c0ff;
+    --code-property: #79c0ff;
+    --code-regex: #a5d6ff;
+    --code-punctuation: #c9d1d9;
+}
+
+/* Syntax Highlighting - Common */
+.hljs {
+    color: var(--code-text);
+    background: var(--code-background);
+}
+
+.hljs-comment,
+.hljs-quote {
+    color: var(--code-comment);
+    font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag {
+    color: var(--code-keyword);
+    font-weight: bold;
+}
+
+.hljs-string,
+.hljs-doctag,
+.hljs-template-variable {
+    color: var(--code-string);
+}
+
+.hljs-number,
+.hljs-literal {
+    color: var(--code-number);
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-title.function_ {
+    color: var(--code-function);
+}
+
+.hljs-title.class_,
+.hljs-title.class_.inherited__,
+.hljs-type {
+    color: var(--code-class);
+}
+
+.hljs-variable,
+.hljs-params,
+.hljs-meta {
+    color: var(--code-variable);
+}
+
+.hljs-operator,
+.hljs-tag {
+    color: var(--code-operator);
+}
+
+.hljs-built_in {
+    color: var(--code-builtin);
+}
+
+.hljs-attr,
+.hljs-attribute,
+.hljs-subst {
+    color: var(--code-property);
+}
+
+.hljs-regexp {
+    color: var(--code-regex);
+}
+
+.hljs-symbol,
+.hljs-bullet {
+    color: var(--code-keyword);
+}
+
+.hljs-punctuation {
+    color: var(--code-punctuation);
+}
+
+/* Language Specific Styles */
+
+/* Python */
+.language-python .hljs-decorator,
+.language-python .hljs-meta {
+    color: #e36209;
+}
+
+.language-python .hljs-function {
+    color: #6f42c1;
+}
+
+.language-python .hljs-self,
+.language-python .hljs-cls {
+    color: #d73a49;
+    font-style: italic;
+}
+
+/* JSON */
+.language-json .hljs-property {
+    color: #d73a49;
+}
+
+/* HTML */
+.language-html .hljs-tag {
+    color: #22863a;
+}
+
+.language-html .hljs-name {
+    color: #6f42c1;
+}
+
+.language-html .hljs-attr {
+    color: #005cc5;
+}
+
+/* CSS */
+.language-css .hljs-selector-class,
+.language-css .hljs-selector-id {
+    color: #6f42c1;
+}
+
+.language-css .hljs-property {
+    color: #005cc5;
+}
+
+.language-css .hljs-selector-tag {
+    color: #22863a;
+}
+
+/* Line Numbers */
+pre.line-numbers {
+    position: relative;
+    padding-left: 3.8em;
+    counter-reset: linenumber;
+}
+
+pre.line-numbers > code {
+    position: relative;
+}
+
+.line-numbers .line-numbers-rows {
+    position: absolute;
+    pointer-events: none;
+    top: 0;
+    left: -3.8em;
+    width: 3em;
+    letter-spacing: -1px;
+    border-right: 1px solid #999;
+    user-select: none;
+}
+
+.line-numbers-rows > span {
+    display: block;
+    counter-increment: linenumber;
+}
+
+.line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+}
+
+/* Highlighting */
+.code-highlight {
+    background-color: rgba(255, 215, 0, 0.2);
+}
+
+.code-highlight-emphasis {
+    background-color: rgba(255, 165, 0, 0.3);
+    font-weight: bold;
+}
+
+/* Inline Code */
+:not(pre) > code {
+    color: var(--code-function);
+    background-color: var(--code-background);
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+
+/* Code Block Title */
+.code-title {
+    font-family: var(--font-family-base);
+    background-color: #e8e8e8;
+    padding: 0.5em 1em;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    margin-top: 1em;
+}
+
+.code-title + pre {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/* Specific styling for file paths or filenames */
+.code-filepath {
+    font-family: var(--font-family-monospace);
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    color: #555;
+    border: 1px solid #ddd;
+}
+
+/* Specific styling for terminal commands */
+.code-terminal {
+    background-color: #2d333b;
+    color: #fff;
+}
+
+.code-terminal .hljs-prompt {
+    color: #8ec07c;
+    user-select: none;
+}
+
+.code-terminal .hljs-prompt:before {
+    content: "$ ";
+}
+
+/* Optional: Styling for diff highlighting */
+.hljs-addition {
+    background-color: rgba(46, 160, 67, 0.15);
+    color: #2ea043;
+}
+
+.hljs-deletion {
+    background-color: rgba(248, 81, 73, 0.15);
+    color: #f85149;
+}
+
+/* Custom styling for code output */
+.code-output {
+    background-color: #f8f9fa;
+    border-left: 3px solid #28a745;
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.code-output-title {
+    font-family: var(--font-family-base);
+    background-color: #e8f4ea;
+    padding: 0.5em 1em;
+    font-weight: bold;
+    border: 1px solid #c3e6cb;
+    border-bottom: none;
+    color: #28a745;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    pre code {
+        font-size: 0.8em;
+    }
+    
+    .line-numbers .line-numbers-rows {
+        left: -3.2em;
+        width: 2.5em;
+    }
+}

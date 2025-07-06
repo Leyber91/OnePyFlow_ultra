@@ -1,0 +1,39 @@
+flowchart TD
+    A[Application Start] --> B{Check for 'OnePyFlowParams.json'}
+    B -->|File Found| C[Read JSON Parameters]
+    B -->|No File| Z[Launch GUI Mode]
+    
+    C --> D[Create Authentication Object]
+    D --> E[Force Cookie Refresh via 'mwinit']
+    E --> F[Parse JSON Parameters]
+    
+    F --> G1[Extract Site]
+    F --> G2[Extract SOSdatetime]
+    F --> G3[Extract EOSdatetime]
+    F --> G4[Extract plan_type]
+    F --> G5[Extract shift]
+    F --> G6[Extract Modules List]
+    
+    G1 & G2 & G3 & G4 & G5 & G6 --> H[Call OneFlow_MainFunction]
+    
+    H --> I[OneFlow Orchestrator]
+    I --> J[Build Data Sources]
+    J --> K[Run Concurrent Tasks]
+    
+    K --> L1[Retrieve DockMaster]
+    K --> L2[Retrieve Galaxy]
+    K --> L3[Retrieve kNekro]
+    K --> L4[Retrieve Other Modules...]
+    
+    L1 --> M1[Process DockMaster]
+    L2 --> M2[Process Galaxy]
+    L3 --> M3[Process kNekro]
+    L4 --> M4[Process Other Modules...]
+    
+    M1 & M2 & M3 & M4 --> N[Merge Results]
+    N --> O[Build Output JSON]
+    O --> P[Add Audit Information]
+    P --> Q[Write to File]
+    
+    Q --> R[Delete Parameter File]
+    R --> S[Exit Application]
