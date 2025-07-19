@@ -49,18 +49,17 @@ def PPR_Q_function(Site: str, start_datetime, end_datetime) -> Dict[str, Any]:
     Returns:
         Dict[str, Any]: Processed PPR_Q data with all metrics.
     """
-
+    
     # 1) Convert start_datetime / end_datetime to datetime if needed
     start_dt = parse_as_datetime(start_datetime)
     end_dt = parse_as_datetime(end_datetime)
+    
+    logging.info(f"PPR_Q_function called with:")
+    logging.info(f"  Site: {Site}")
+    logging.info(f"  Start: {start_dt}")
+    logging.info(f"  End: {end_dt}")
+    logging.info(f"  Duration: {end_dt - start_dt}")
 
     # 2) Now pass them as true datetime objects into PPRQProcessor
     processor = PPRQProcessor(Site, start_dt, end_dt)
     return processor.run()
-
-# Example usage (commented out):
-# if __name__ == "__main__":
-#     Site = "DTM2"
-#     # Passing strings with minute precision:
-#     result = PPR_Q_function("DTM2", "2025-06-13 06:15:00", "2025-06-13 15:00:00")
-#     print(json.dumps(result, indent=4)) 

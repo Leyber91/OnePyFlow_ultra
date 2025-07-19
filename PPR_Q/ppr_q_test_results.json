@@ -1,0 +1,78 @@
+{
+  "test_results": [
+    {
+      "scenario": "Test 1",
+      "success": true,
+      "process_count": 12,
+      "processes": [
+        "PPR_Each_Receive",
+        "PPR_PRU",
+        "PPR_Pallet_Receive",
+        "PPR_LP_Receive",
+        "PPR_Receive_Dock",
+        "PPR_Prep_Recorder",
+        "PPR_RC_Sort",
+        "PPR_Receive_Support",
+        "PPR_Transfer_Out_Dock",
+        "PPR_Transfer_Out",
+        "PPR_RSR_Support",
+        "_metadata"
+      ]
+    },
+    {
+      "scenario": "Test 2",
+      "success": true,
+      "process_count": 14,
+      "processes": [
+        "PPR_Cubiscan",
+        "PPR_Each_Receive",
+        "PPR_Pallet_Receive",
+        "PPR_LP_Receive",
+        "PPR_Prep_Recorder",
+        "PPR_RC_Presort",
+        "PPR_PRU",
+        "PPR_RC_Sort",
+        "PPR_Receive_Dock",
+        "PPR_Receive_Support",
+        "PPR_Transfer_Out_Dock",
+        "PPR_Transfer_Out",
+        "PPR_RSR_Support",
+        "_metadata"
+      ]
+    },
+    {
+      "scenario": "Test 3",
+      "success": true,
+      "process_count": 14,
+      "processes": [
+        "PPR_PRU",
+        "PPR_Cubiscan",
+        "PPR_Each_Receive",
+        "PPR_Pallet_Receive",
+        "PPR_LP_Receive",
+        "PPR_Prep_Recorder",
+        "PPR_RC_Presort",
+        "PPR_Receive_Dock",
+        "PPR_Receive_Support",
+        "PPR_RC_Sort",
+        "PPR_RSR_Support",
+        "PPR_Transfer_Out_Dock",
+        "PPR_Transfer_Out",
+        "_metadata"
+      ]
+    },
+    {
+      "scenario": "Test 4",
+      "success": true,
+      "process_count": 2,
+      "processes": [
+        "PPR_PRU",
+        "_metadata"
+      ]
+    }
+  ],
+  "summary": {
+    "successful_tests": 4,
+    "total_tests": 4
+  }
+}
