@@ -15,39 +15,81 @@ CONFIG: Dict[str, Any] = {
     },
     "sums": {
         "RC_Sort_Primary_TotalUnits": {
-            "conditions": [(15, "Total"), (14, "EACH"), (1, "RC Sort Primary")],
+            "conditions": [(15, "Total"), (14, ["EACH", "EA", "EACHES"]), (1, "RC Sort Primary")],
             "column": 16
         },
         "RC_Sort_Primary_TotalHours": {
-            "conditions": [(15, "Total"), (14, "EACH"), (1, "RC Sort Primary")],
+            "conditions": [(15, "Total"), (14, ["EACH", "EA", "EACHES"]), (1, "RC Sort Primary")],
             "column": 10
         },
         "UIS_5lb_Induct_TotalUnits": {
-            "conditions": [(15, "Total"), (14, "EACH"), (1, "UIS_5lb_Induct")],
+            "conditions": [
+                (15, "Total"),
+                (14, ["EACH", "EA", "EACHES"]),
+                (1, [
+                    "UIS_5lb_Induct", "UIS 5lb Induct",
+                    "UIS_5lb_SCP_Induct", "UIS 5lb SCP Induct"
+                ])
+            ],
             "column": 16
         },
         "UIS_5lb_Induct_TotalHours": {
-            "conditions": [(15, "Total"), (14, "EACH"), (1, "UIS_5lb_Induct")],
+            "conditions": [
+                (15, "Total"),
+                (14, ["EACH", "EA", "EACHES"]),
+                (1, [
+                    "UIS_5lb_Induct", "UIS 5lb Induct",
+                    "UIS_5lb_SCP_Induct", "UIS 5lb SCP Induct"
+                ])
+            ],
             "column": 10
         },
         "UIS_20lb_Induct_TotalUnits": {
-            "conditions": [(15, "Total"), (14, "EACH"), (1, "UIS_20lb_Induct")],
+            "conditions": [
+                (15, "Total"),
+                (14, ["EACH", "EA", "EACHES"]),
+                (1, [
+                    "UIS_20lb_Induct", "UIS 20lb Induct",
+                    "UIS_20lb_SCP_Induct", "UIS 20lb SCP Induct"
+                ])
+            ],
             "column": 16
         },
         "UIS_20lb_Induct_TotalHours": {
-            "conditions": [(15, "Total"), (14, "EACH"), (1, "UIS_20lb_Induct")],
+            "conditions": [
+                (15, "Total"),
+                (14, ["EACH", "EA", "EACHES"]),
+                (1, [
+                    "UIS_20lb_Induct", "UIS 20lb Induct",
+                    "UIS_20lb_SCP_Induct", "UIS 20lb SCP Induct"
+                ])
+            ],
             "column": 10
         },
         "Small_Units_Manual": {
-            "conditions": [(15, "Small"), (14, "EACH"), (1, "RC Sort Primary")],
+            "conditions": [(15, "Small"), (14, ["EACH", "EA", "EACHES"]), (1, "RC Sort Primary")],
             "column": 16
         },
         "Small_Units_UIS5": {
-            "conditions": [(15, "Small"), (14, "EACH"), (1, "UIS_5lb_Induct")],
+            "conditions": [
+                (15, "Small"),
+                (14, ["EACH", "EA", "EACHES"]),
+                (1, [
+                    "UIS_5lb_Induct", "UIS 5lb Induct",
+                    "UIS_5lb_SCP_Induct", "UIS 5lb SCP Induct"
+                ])
+            ],
             "column": 16
         },
         "Small_Units_UIS20": {
-            "conditions": [(15, "Small"), (14, "EACH"), (1, "UIS_20lb_Induct")],
+            "conditions": [
+                (15, "Small"),
+                (14, ["EACH", "EA", "EACHES"]),
+                (1, [
+                    "UIS_20lb_Induct", "UIS 20lb Induct",
+                    "UIS_20lb_SCP_Induct", "UIS 20lb SCP Induct"
+                ])
+            ],
             "column": 16
         }
     }

@@ -100,8 +100,8 @@ def HCtoolPuller():
         logger.info(f"Parameters: Site={Site}, Date={Date}, Shift={Shift}")
         print(f"HCTool: Parameters: Site={Site}, Date={Date}, Shift={Shift}")
             
-        # Define the URL for the API request
-        url = f"https://ecft.fulfillment.a2z.com/api/headcount/ixd/actual_data?fc={Site}&date={Date}&shift={Shift}"
+        # Define the URL for the API request (R100: switch to 'of' endpoints)
+        url = f"https://ecft.fulfillment.a2z.com/api/headcount/of/actual_data?date={Date}&fc={Site}&shift={Shift}"
         logger.info(f"HCTool: The URL for {Site} is: {url}")
         print(f"HCTool: The URL for {Site} is: {url}")
     

@@ -143,8 +143,8 @@ def BackLogPuller():
             print("BackLog Puller: Failed to load Midway cookies. Cannot proceed.")
             return None
         
-        # Define the URL for the API request - FIXED: removed extra space after date
-        url = f"https://ecft.fulfillment.a2z.com/api/headcount/ixd/bl_arrivals?fc={site}&date={date}&shift={shift}"
+        # Define the URL for the API request (R100: switch to 'of' endpoints)
+        url = f"https://ecft.fulfillment.a2z.com/api/headcount/of/bl_arrivals?fc={site}&date={date}&shift={shift}"
         logger.info(f"BackLog Puller URL: {url}")
         print(f"BackLog Puller: The URL for {site} is: {url}")
         
