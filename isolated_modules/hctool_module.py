@@ -100,8 +100,8 @@ def HCtoolPuller():
         logger.info(f"Parameters: Site={Site}, Date={Date}, Shift={Shift}")
         print(f"HCTool: Parameters: Site={Site}, Date={Date}, Shift={Shift}")
             
-        # Define the URL for the API request
-        url = f"https://ecft.fulfillment.a2z.com/api/headcount/ixd/actual_data?fc={Site}&date={Date}&shift={Shift}"
+        # Define the URL for the API request (R100: switch to 'of' endpoints)
+        url = f"https://ecft.fulfillment.a2z.com/api/headcount/of/actual_data?date={Date}&fc={Site}&shift={Shift}"
         logger.info(f"HCTool: The URL for {Site} is: {url}")
         print(f"HCTool: The URL for {Site} is: {url}")
     
@@ -140,6 +140,19 @@ def HCtoolPuller():
                     
                     for entry in actual_data:
                         if isinstance(entry, dict):  # Check if the entry is a dictionary
+                            # Filter out IB Problem Solve data as agreed with alematti
+                            # This ensures both HC Suggested and HC Reported show 0 in Flexsim emails
+                            ppr_group = entry.get("ppr_group", "")
+                            pp = entry.get("pp", "")
+                            
+                            # Skip IB Problem Solve entries
+                            if (ppr_group.lower() == "ib problem solve" or 
+                                pp.lower() == "ib problem solve" or
+                                "ib problem solve" in ppr_group.lower() or
+                                "ib problem solve" in pp.lower()):
+                                logger.info(f"HCTool: Filtering out IB Problem Solve entry: {entry}")
+                                continue
+                            
                             key = (entry.get("ppr_group", "UNKNOWN_PPR"), 
                                    entry.get("pp", "UNKNOWN_PP"), 
                                    entry.get("data_type", "UNKNOWN_TYPE"))

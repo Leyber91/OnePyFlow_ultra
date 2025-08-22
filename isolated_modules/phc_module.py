@@ -114,9 +114,8 @@ def PHCpuller():
             print("PHC Puller: Failed to load Midway cookies. Cannot proceed.")
             return None
         
-        # Define the URL for the API request
-        # NOTE: Removed the '%20' from date to avoid potential issues
-        url = f"https://ecft.fulfillment.a2z.com/api/headcount/ixd/predicted_data?fc={site}&date={date}&shift={shift}"
+        # Define the URL for the API request (R100: switch to 'of' endpoints)
+        url = f"https://ecft.fulfillment.a2z.com/api/headcount/of/predicted_data?date={date}&fc={site}"
         logger.info(f"PHC Puller URL: {url}")
         print(f"PHC Puller: The URL for {site} is: {url}")
         

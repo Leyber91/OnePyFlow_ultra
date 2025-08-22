@@ -1,0 +1,93 @@
+{
+    "PPR_Q": {
+        "PPR_PRU": {},
+        "_metadata": {
+            "site": "WRO5",
+            "start_datetime": "2025-08-21T18:00:00",
+            "end_datetime": "2025-08-22T04:30:05",
+            "execution_time_seconds": 5.044037580490112,
+            "performance_metrics": {
+                "PPR_PRU": {
+                    "total_time": 4.458042144775391,
+                    "fetch_time": 4.290010452270508,
+                    "clean_time": 0.026893138885498047,
+                    "process_time": 0.11994242668151855,
+                    "rows_processed": 214
+                }
+            },
+            "cache_hits": 1,
+            "failed_processes": [
+                "PPR_Case_Receive",
+                "PPR_Cubiscan",
+                "PPR_Transfer_Out",
+                "PPR_Pallet_Receive",
+                "PPR_RC_Presort",
+                "PPR_RSR_Support",
+                "PPR_Prep_Recorder",
+                "PPR_Receive_Dock",
+                "PPR_RC_Sort",
+                "PPR_Each_Receive",
+                "PPR_LP_Receive",
+                "PPR_Receive_Support",
+                "PPR_Transfer_Out_Dock"
+            ],
+            "optimization_version": "2.0"
+        },
+        "ExecutionTimeSeconds": 5.0825
+    },
+    "Audit": {
+        "Timestamp": "2025-08-21 02:07:35",
+        "ModulesAttempted": [
+            "PPR_Q"
+        ],
+        "TotalExecutionTimeSeconds": 7.0301,
+        "TotalExecutionTimeMinutes": 0.1172,
+        "ModuleExecutionTimes": {
+            "PPR_Q": 5.0825
+        },
+        "ErrorCount": 0,
+        "ErrorDetails": [],
+        "History": [
+            {
+                "Timestamp": "2025-08-21 02:07:35",
+                "ModulesAttempted": [
+                    "PPR_Q"
+                ],
+                "TotalExecutionTimeSeconds": 7.0301,
+                "TotalExecutionTimeMinutes": 0.1172,
+                "ModuleExecutionTimes": {
+                    "PPR_Q": 5.0825
+                },
+                "SkippedOrTimeoutModules": [],
+                "ErrorCount": 0,
+                "ErrorDetails": [],
+                "ExecutionMode": "script",
+                "ExecutableName": "main.py"
+            }
+        ],
+        "CumulativeTimeSeconds": 7.0301,
+        "ModuleTimestamps": {
+            "PPR_Q": "2025-08-21T02:07:30.285840"
+        },
+        "ModuleHistories": {
+            "PPR_Q": [
+                {
+                    "Timestamp": "2025-08-21T02:07:30.285840",
+                    "ExecutionTimeSeconds": 5.0825
+                }
+            ]
+        },
+        "ModulePerformance": {
+            "PPR_Q": {
+                "LastExecutionTime": "2025-08-21T02:07:30.285840",
+                "ExecutionTimeSeconds": 5.0825,
+                "Status": "Success"
+            }
+        }
+    },
+    "PPR_Q_metadata": {
+        "LastRunTimestamp": "2025-08-21T02:07:30.285840",
+        "ExecutionTimeSeconds": 5.0825,
+        "ExecutionDate": "2025-08-21"
+    }
+}
