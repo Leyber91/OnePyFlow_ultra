@@ -18,6 +18,7 @@ from data_retrieval.pull_quip_csv_data import pull_quip_csv_data
 from data_retrieval.pull_carrier_matrix_data import pull_carrier_matrix
 from data_retrieval.pull_sspot_data import pull_sspot_data
 from data_retrieval.pull_scacs_mapping_data import pull_scacs_mapping_data
+from data_retrieval.pull_spark_snapshot_data import pull_spark_snapshot_data
 from data_retrieval.pull_vip_data import pull_vip_data
 from data_retrieval.pull_ibbt_data import pull_ibbt_data  # Add IBBT import
 
@@ -82,6 +83,7 @@ def retrieve_data(func_name, fc, start_date, end_date, midway_session, cookie_ja
             'QuipCSV': lambda: pull_quip_csv_data(),  # QuipCSV handles its own authentication via browser cookies
             'CarrierMatrix': lambda: pull_carrier_matrix(fc, midway_session, cookie_jar),
             'SCACs': lambda: pull_scacs_mapping_data(fc, start_date, end_date, session, cookie_jar),
+            'SPARK': lambda: pull_spark_snapshot_data(fc, start_date, end_date, session, cookie_jar),
             'VIP': lambda: pull_vip_data(fc, midway_session, cookie_jar),
             'IBBT': lambda: pull_ibbt_data(fc, midway_session, cookie_jar)  # Add IBBT function mapping
         }

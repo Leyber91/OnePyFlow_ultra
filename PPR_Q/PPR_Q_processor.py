@@ -50,18 +50,18 @@ class PPRQProcessor:
     Uses ALL existing PPR process files but with flexible minute-level time ranges.
     """
 
-    def __init__(self, site: str, start_datetime: datetime, end_datetime: datetime):
+    def __init__(self, site: str, sos_datetime: datetime, eos_datetime: datetime):
         """
-        Initializes the PPRQProcessor with site details and datetime range.
+        Initializes the PPRQProcessor with site details and shift datetime range.
 
         Args:
             site (str): The warehouse site identifier.
-            start_datetime (datetime): Start datetime with minute precision.
-            end_datetime (datetime): End datetime with minute precision.
+            sos_datetime (datetime): Start of shift datetime with minute precision.
+            eos_datetime (datetime): End of shift datetime with minute precision.
         """
         self.site = site
-        self.start_datetime = start_datetime
-        self.end_datetime = end_datetime
+        self.sos_datetime = sos_datetime
+        self.eos_datetime = eos_datetime
         self.cookie_file_path = f'C:/Users/{getuser()}/.midway/cookie'
 
         # Use the EXACT SAME process IDs as PPR
@@ -69,7 +69,7 @@ class PPRQProcessor:
             "PPR_PRU": "",
             "PPR_Case_Receive": "1003025",
             "PPR_Cubiscan": "1002971",
-            "PPR_Each_Receive": "1003027",
+            "PPR_Each_Receive": "01003027",
             "PPR_LP_Receive": "1003031",
             "PPR_Pallet_Receive": "1003032",
             "PPR_Prep_Recorder": "01003002",
@@ -84,6 +84,9 @@ class PPRQProcessor:
 
         # Our final PPR_Q data structure
         self.PPR_Q_JSON: Dict[str, Any] = {}
+        
+        # Store raw DataFrames for size-specific calculations
+        self.raw_dataframes: Dict[str, pd.DataFrame] = {}
 
         # Track overall execution time
         self.start_time = time.time()
@@ -175,231 +178,107 @@ class PPRQProcessor:
     def build_url(self, process_key: str, process_id: str, time_range: Dict[str, str]) -> str:
         """
         Constructs the URL for the API request based on process and time range details.
-        FIXED to include _adjustPlanHours=on and remove problematic intervalType=INTRADAY.
+        Uses functionRollup when a process_id is provided, otherwise falls back to processPathRollup.
+        This mirrors the exact logic used by the working PPR_processor.
         """
         base_url = "https://fclm-portal.amazon.com/reports/"
+        start_date = f"{time_range['start_year']}/{time_range['start_month']}/{time_range['start_day']}"
+        end_date = f"{time_range['end_year']}/{time_range['end_month']}/{time_range['end_day']}"
+
+        if process_id:  # use functionRollup, same logic as PPR_processor
+            url = (
+                f"{base_url}functionRollup?reportFormat=CSV"
+                f"&warehouseId={self.site}"
+                f"&processId={process_id}"
+                f"&maxIntradayDays=1&spanType=Intraday"
+                f"&startDateIntraday={start_date}&startHourIntraday={time_range['start_hour']}&startMinuteIntraday={time_range['start_minute']}"
+                f"&endDateIntraday={end_date}&endHourIntraday={time_range['end_hour']}&endMinuteIntraday={time_range['end_minute']}"
+                f"&_adjustPlanHours=on&hideEmptyLineItems=true&_hideEmptyLineItems=on&_rememberViewForWarehouse=on&employmentType=AllEmployees"
+            )
+        else:  # no process ID – stick with processPathRollup
+            url = (
+                f"{base_url}processPathRollup?reportFormat=CSV"
+                f"&warehouseId={self.site}"
+                f"&maxIntradayDays=1&spanType=Intraday"
+                f"&startDateIntraday={start_date}&startHourIntraday={time_range['start_hour']}&startMinuteIntraday={time_range['start_minute']}"
+                f"&endDateIntraday={end_date}&endHourIntraday={time_range['end_hour']}&endMinuteIntraday={time_range['end_minute']}"
+                f"&_adjustPlanHours=on&hideEmptyLineItems=true&_hideEmptyLineItems=on&_rememberViewForWarehouse=on&employmentType=AllEmployees"
+            )
         
-        # Use processPathRollup for ALL processes (same as working sample URL)
-        # This endpoint works while functionRollup is failing
-        url = (
-            f"{base_url}processPathRollup?reportFormat=CSV&warehouseId={self.site}"
-            f"&maxIntradayDays=1&spanType=Intraday&startDateIntraday={time_range['start_year']}%2F"
-            f"{time_range['start_month']}%2F{time_range['start_day']}&startHourIntraday={time_range['start_hour']}"
-            f"&startMinuteIntraday={time_range['start_minute']}&endDateIntraday={time_range['end_year']}%2F"
-            f"{time_range['end_month']}%2F{time_range['end_day']}&endHourIntraday={time_range['end_hour']}"
-            f"&endMinuteIntraday={time_range['end_minute']}&_adjustPlanHours=on&hideEmptyLineItems=true"
-            f"&_hideEmptyLineItems=on&_rememberViewForWarehouse=on&employmentType=AllEmployees"
-        )
-        logging.info(f"PPR_Q URL for {process_key}: {url}")
+        logging.info(f"PPR_Q URL for {process_key} (process_id='{process_id}'): {url}")
         return url
 
     def get_time_range(self) -> Dict[str, str]:
         """
-        Generates a time range using the EXACT same approach as the working PPR URL.
-        Uses current/recent dates, not historical weeks back.
+        Generates a time range for the exact shift period specified.
+        Creates a single intraday URL covering the entire shift duration.
         """
-        # Use the exact current time range (like the working PPR URL sample)
         time_range = {
-            'start_hour': self.start_datetime.strftime("%H"),
-            'start_minute': self.start_datetime.strftime("%M").lstrip('0') or '0',
-            'start_day': self.start_datetime.strftime("%d"),
-            'start_month': self.start_datetime.strftime("%m"),
-            'start_year': self.start_datetime.strftime("%Y"),
-            'end_hour': self.end_datetime.strftime("%H"),
-            'end_minute': self.end_datetime.strftime("%M").lstrip('0') or '0',
-            'end_day': self.end_datetime.strftime("%d"),
-            'end_month': self.end_datetime.strftime("%m"),
-            'end_year': self.end_datetime.strftime("%Y")
+            'start_hour': self.sos_datetime.strftime("%H"),
+            'start_minute': self.sos_datetime.strftime("%M").lstrip('0') or '0',
+            'start_day': self.sos_datetime.strftime("%d"),
+            'start_month': self.sos_datetime.strftime("%m"),
+            'start_year': self.sos_datetime.strftime("%Y"),
+            'end_hour': self.eos_datetime.strftime("%H"),
+            'end_minute': self.eos_datetime.strftime("%M").lstrip('0') or '0',
+            'end_day': self.eos_datetime.strftime("%d"),
+            'end_month': self.eos_datetime.strftime("%m"),
+            'end_year': self.eos_datetime.strftime("%Y")
         }
-        logging.info(f"PPR_Q time range (current): {self.start_datetime} to {self.end_datetime}")
+        logging.info(f"PPR_Q time range: {self.sos_datetime} to {self.eos_datetime}")
         logging.debug(f"Generated time range: {time_range}")
         return time_range
 
-    def get_extended_time_range(self) -> Dict[str, str]:
-        """
-        Generates an extended time range (24 hours) to work around API limitations.
-        The API often ignores short time ranges, so we fetch a larger window and filter later.
-        """
-        # Extend the time range to 24 hours to ensure we get data
-        extended_start = self.start_datetime - timedelta(hours=12)
-        extended_end = self.end_datetime + timedelta(hours=12)
-        
-        time_range = {
-            'start_hour': extended_start.strftime("%H"),
-            'start_minute': extended_start.strftime("%M").lstrip('0') or '0',
-            'start_day': extended_start.strftime("%d"),
-            'start_month': extended_start.strftime("%m"),
-            'start_year': extended_start.strftime("%Y"),
-            'end_hour': extended_end.strftime("%H"),
-            'end_minute': extended_end.strftime("%M").lstrip('0') or '0',
-            'end_day': extended_end.strftime("%d"),
-            'end_month': extended_end.strftime("%m"),
-            'end_year': extended_end.strftime("%Y")
-        }
-        logging.info(f"PPR_Q extended time range: {extended_start} to {extended_end}")
-        logging.debug(f"Generated extended time range: {time_range}")
-        return time_range
 
-    def filter_data_to_exact_range(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Filters the DataFrame to the exact time range requested.
-        This handles the case where the API returns more data than requested.
-        """
-        if df.empty:
-            return df
-            
-        logging.info(f"Filtering data from {len(df)} rows to exact time range...")
-        
-        # First, let's examine the actual column structure
-        logging.info(f"DataFrame columns: {list(df.columns)}")
-        logging.info(f"DataFrame shape: {df.shape}")
-        
-        # Try to find datetime columns to filter on
-        datetime_columns = []
-        for col in df.columns:
-            if any(keyword in col.lower() for keyword in ['date', 'time', 'datetime', 'hour', 'day']):
-                datetime_columns.append(col)
-        
-        if datetime_columns:
-            logging.info(f"Found datetime columns: {datetime_columns}")
-            
-            # Try to parse and filter by datetime
-            for col in datetime_columns:
-                try:
-                    # Try to convert to datetime
-                    df[col] = pd.to_datetime(df[col], errors='coerce')
-                    
-                    # Filter to exact time range
-                    mask = (df[col] >= self.start_datetime) & (df[col] <= self.end_datetime)
-                    filtered_df = df[mask]
-                    
-                    if not filtered_df.empty:
-                        logging.info(f"Successfully filtered using column '{col}': {len(filtered_df)} rows in exact time range")
-                        return filtered_df
-                    else:
-                        logging.warning(f"Filtering with column '{col}' resulted in empty DataFrame")
-                        
-                except Exception as e:
-                    logging.debug(f"Could not filter using column '{col}': {e}")
-                    continue
-            
-            # If we get here, filtering failed, so we need to estimate the proportion
-            logging.warning("Could not filter by datetime. Estimating proportion based on time range...")
-            return self._estimate_proportional_data(df)
-        else:
-            logging.warning("No datetime columns found for filtering. Estimating proportion based on time range...")
-            return self._estimate_proportional_data(df)
 
-    def _estimate_proportional_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        """
-        Estimates the proportion of data that belongs to the exact time range.
-        This is a fallback when we can't filter by datetime columns.
-        """
-        # Calculate the proportion of time our range represents
-        total_hours = 24  # Assuming the extended range is 24 hours
-        requested_hours = (self.end_datetime - self.start_datetime).total_seconds() / 3600
-        
-        proportion = requested_hours / total_hours
-        logging.info(f"Time proportion: {requested_hours:.2f} hours out of {total_hours} hours = {proportion:.2%}")
-        
-        # Take a proportional sample of the data
-        sample_size = max(1, int(len(df) * proportion))
-        logging.info(f"Taking {sample_size} rows out of {len(df)} total rows")
-        
-        # Take a sample from the middle of the data (assuming it's roughly chronological)
-        start_idx = (len(df) - sample_size) // 2
-        end_idx = start_idx + sample_size
-        
-        sampled_df = df.iloc[start_idx:end_idx].copy()
-        logging.info(f"Sampled {len(sampled_df)} rows for exact time range")
-        
-        return sampled_df
+
 
     def fetch_process_data(self, process_key: str) -> pd.DataFrame:
         """
-        Fetches data for a specific process using PPR's proven multi-week strategy.
-        This approach is more reliable than trying exact current shift times.
+        Fetches data for a specific process using a single intraday URL covering the exact time range.
+        This follows the recommendation to avoid multi-strategy approaches and weekly loops.
+        However, the API often ignores time ranges and returns much more data than requested,
+        so we need to scale the results appropriately.
         """
         logging.info(f"Fetching data for process: {process_key}")
         process_id = self.process_ids.get(process_key, "")
-        process_df = pd.DataFrame()
 
-        # Strategy 1: Use PPR's proven time range approach (1 week back)
-        logging.info(f"Strategy 1: Using PPR's time range approach (1 week back) for process {process_key}...")
+        # Build single intraday URL for exact time range
         time_range = self.get_time_range()
         url = self.build_url(process_key, process_id, time_range)
         
+        # Single API call per process covering the entire shift
         df = self._make_request(process_key, url)
         if not df.empty:
-            logging.info(f"Strategy 1 successful: Got {len(df)} rows for process {process_key}")
+            logging.info(f"Successfully fetched {len(df)} rows for process {process_key}")
+            
+            # Scale the data to match the requested time range
+            scaled_df = self._scale_data_to_time_range(df, process_key)
+            return scaled_df
+        else:
+            logging.warning(f"No data returned for process {process_key}")
+            return pd.DataFrame()
+
+    def _scale_data_to_time_range(self, df: pd.DataFrame, process_key: str) -> pd.DataFrame:
+        """
+        DISABLED: No longer scales data to avoid magnitude issues.
+        The PPR API returns data for the exact time range requested when using proper parameters.
+        Scaling was causing values to be 2 orders of magnitude lower than expected.
+        """
+        if df.empty:
             return df
 
-        # Strategy 2: Try exact current time range as fallback
-        logging.info(f"Strategy 2: Trying exact current time range for process {process_key}...")
-        current_start = self.start_datetime
-        current_end = self.end_datetime
+        # Calculate requested shift duration for logging only
+        requested_hours = (self.eos_datetime - self.sos_datetime).total_seconds() / 3600
         
-        current_time_range = {
-            'start_hour': current_start.strftime("%H"),
-            'start_minute': current_start.strftime("%M").lstrip('0') or '0',
-            'start_day': current_start.strftime("%d"),
-            'start_month': current_start.strftime("%m"),
-            'start_year': current_start.strftime("%Y"),
-            'end_hour': current_end.strftime("%H"),
-            'end_minute': current_end.strftime("%M").lstrip('0') or '0',
-            'end_day': current_end.strftime("%d"),
-            'end_month': current_end.strftime("%m"),
-            'end_year': current_end.strftime("%Y")
-        }
+        # Log the time range but don't scale
+        logging.info(f"Time range for {process_key}:")
+        logging.info(f"  Requested: {requested_hours:.1f} hours")
+        logging.info(f"  No scaling applied - using raw API data")
         
-        url = self.build_url(process_key, process_id, current_time_range)
-        df = self._make_request(process_key, url)
-        if not df.empty:
-            logging.info(f"Strategy 2 successful: Got {len(df)} rows for process {process_key}")
-            return df
+        return df
 
-        # Strategy 3: Try extended time range (24 hours)
-        logging.info(f"Strategy 3: Trying extended time range (24 hours) for process {process_key}...")
-        extended_time_range = self.get_extended_time_range()
-        url = self.build_url(process_key, process_id, extended_time_range)
-        
-        df = self._make_request(process_key, url)
-        if not df.empty:
-            logging.info(f"Strategy 3 successful: Got {len(df)} rows for process {process_key}")
-            # Filter to exact range
-            filtered_df = self.filter_data_to_exact_range(df)
-            if not filtered_df.empty:
-                return filtered_df
 
-        # Strategy 4: Create fallback data (last resort)
-        logging.warning(f"All strategies failed for process {process_key}. Using fallback values.")
-        process_df = self._create_fallback_data(process_key)
-        
-        return process_df
-
-    def _get_smaller_extended_time_range(self) -> Dict[str, str]:
-        """
-        Generates a smaller extended time range (6 hours) to work around API limitations.
-        This is more targeted than the 24-hour range.
-        """
-        # Extend the time range to 6 hours to ensure we get data
-        extended_start = self.start_datetime - timedelta(hours=3)
-        extended_end = self.end_datetime + timedelta(hours=3)
-        
-        time_range = {
-            'start_hour': extended_start.strftime("%H"),
-            'start_minute': extended_start.strftime("%M").lstrip('0') or '0',
-            'start_day': extended_start.strftime("%d"),
-            'start_month': extended_start.strftime("%m"),
-            'start_year': extended_start.strftime("%Y"),
-            'end_hour': extended_end.strftime("%H"),
-            'end_minute': extended_end.strftime("%M").lstrip('0') or '0',
-            'end_day': extended_end.strftime("%d"),
-            'end_month': extended_end.strftime("%m"),
-            'end_year': extended_end.strftime("%Y")
-        }
-        logging.info(f"PPR_Q smaller extended time range: {extended_start} to {extended_end}")
-        return time_range
 
     def _make_request(self, process_key: str, url: str) -> pd.DataFrame:
         """
@@ -416,12 +295,26 @@ class PPRQProcessor:
                     logging.debug(f"Response preview: {response.text[:200]}...")
                     return pd.DataFrame()
                 
-                df = pd.read_csv(
-                    StringIO(response.text),
-                    delimiter=';',
-                    encoding='ISO-8859-1',
-                    on_bad_lines='skip'
-                )
+                # Try multiple parsing strategies like the working PPR processor
+                df = None
+                parsing_strategies = [
+                    # Strategy 1: Comma delimiter (most common for FCLM API)
+                    lambda: pd.read_csv(StringIO(response.text), delimiter=',', encoding='ISO-8859-1', on_bad_lines='skip'),
+                    # Strategy 2: Semicolon delimiter (fallback)
+                    lambda: pd.read_csv(StringIO(response.text), delimiter=';', encoding='ISO-8859-1', on_bad_lines='skip'),
+                    # Strategy 3: Auto-detect delimiter
+                    lambda: pd.read_csv(StringIO(response.text), encoding='ISO-8859-1', on_bad_lines='skip', engine='python')
+                ]
+                
+                for strategy_idx, strategy in enumerate(parsing_strategies, 1):
+                    try:
+                        df = strategy()
+                        if not df.empty and df.shape[1] > 1:  # Must have multiple columns
+                            logging.info(f"CSV parsing strategy {strategy_idx} successful for process {process_key}.")
+                            break
+                    except Exception as e:
+                        logging.debug(f"CSV parsing strategy {strategy_idx} failed for process {process_key}: {e}")
+                        continue
                 if not df.empty:
                     logging.debug(f"Appended data for process {process_key}. Shape: {df.shape}")
                     # Log first few rows to debug
@@ -439,74 +332,7 @@ class PPRQProcessor:
         
         return pd.DataFrame()
 
-    def _create_fallback_data(self, process_key: str) -> pd.DataFrame:
-        """
-        Creates minimal fallback data when no real data can be fetched.
-        This prevents empty PPR_Q output and provides zero values for calculations.
-        """
-        logging.info(f"Creating fallback data structure for {process_key}")
-        
-        # Create a minimal DataFrame with expected columns
-        fallback_data = {
-            'Column_0': ['Fallback'],
-            'Column_1': ['Data'],
-            'Column_2': ['Structure'],
-            'Column_3': [f'{process_key} - Fallback'],
-            'Column_4': [0],
-            'Column_5': [0],
-            'Column_6': [0],
-            'Column_7': [0],
-            'Column_8': [0],
-            'Column_9': [0],
-            'Column_10': [0],
-            'Column_11': [0],
-            'Column_12': [0],
-            'Column_13': [0],
-            'Column_14': [0],  # Volume column
-            'Column_15': [0],  # Hours column
-            'Column_16': [0],  # Rate column
-        }
-        
-        df = pd.DataFrame(fallback_data)
-        logging.info(f"Created fallback DataFrame with {len(df)} rows and {len(df.columns)} columns")
-        return df
 
-    def _fetch_historical_fallback(self, process_key: str, process_id: str) -> pd.DataFrame:
-        """
-        Fallback method that uses the original PPR approach (4 weeks of historical data).
-        This ensures we always get some data, even if it's not for the exact time range.
-        """
-        logging.info(f"Using historical fallback for process {process_key}")
-        process_df = pd.DataFrame()
-        
-        # Get 4 weeks of historical data (like original PPR)
-        for i in range(1, 5):  # 4 weeks
-            shift_start = self.start_datetime - timedelta(weeks=i)
-            shift_end = self.end_datetime - timedelta(weeks=i)
-            
-            shift = {
-                'start_hour': shift_start.strftime("%H"),
-                'start_minute': shift_start.strftime("%M").lstrip('0') or '0',
-                'start_day': shift_start.strftime("%d"),
-                'start_month': shift_start.strftime("%m"),
-                'start_year': shift_start.strftime("%Y"),
-                'end_hour': shift_end.strftime("%H"),
-                'end_minute': shift_end.strftime("%M").lstrip('0') or '0',
-                'end_day': shift_end.strftime("%d"),
-                'end_month': shift_end.strftime("%m"),
-                'end_year': shift_end.strftime("%Y")
-            }
-            
-            url = self.build_url(process_key, process_id, shift)
-            df = self._make_request(process_key, url)
-            if not df.empty:
-                process_df = pd.concat([process_df, df], ignore_index=True)
-                logging.debug(f"Added historical week {i} data for process {process_key}")
-        
-        if not process_df.empty:
-            logging.info(f"Historical fallback successful: Got {len(process_df)} total rows for process {process_key}")
-        
-        return process_df
 
     def clean_data(self, df: pd.DataFrame) -> pd.DataFrame:
         """
@@ -571,6 +397,10 @@ class PPRQProcessor:
         if cleaned_df.empty:
             logging.warning(f"Cleaned data is empty for process {process_key}. Skipping processing.")
             return
+        
+        # Store raw DataFrame for size-specific calculations
+        self.raw_dataframes[process_key] = cleaned_df.copy()
+        
         # 3) run the process-specific function - EXACT SAME as PPR
         process_func = self.process_handlers[process_key]["function"]
         config = self.process_handlers[process_key]["config"]
@@ -595,10 +425,10 @@ class PPRQProcessor:
             process_data = {}
             
             # DEBUG: Show DataFrame structure for rate debugging
-            logging.info(f"🔍 DEBUG {process_key}: DataFrame shape = {df.shape}")
-            logging.info(f"🔍 DEBUG {process_key}: Columns = {list(df.columns)}")
+            logging.info(f"[DEBUG] {process_key}: DataFrame shape = {df.shape}")
+            logging.info(f"[DEBUG] {process_key}: Columns = {list(df.columns)}")
             if len(df) > 0:
-                logging.info(f"🔍 DEBUG {process_key}: First row sample = {df.iloc[0].tolist()[:20]}")  # First 20 columns
+                logging.info(f"[DEBUG] {process_key}: First row sample = {df.iloc[0].tolist()[:20]}")  # First 20 columns
             
             # 1) Extract columns based on config
             for col_key, col_idx in config.get("columns", {}).items():
@@ -607,7 +437,7 @@ class PPRQProcessor:
                     # DEBUG: Show rate-related column data
                     if "Rate" in col_key:
                         sample_values = df.iloc[:5, col_idx].tolist() if len(df) > 0 else []
-                        logging.info(f"🎯 DEBUG {process_key}: {col_key} (col {col_idx}) = {sample_values}")
+                        logging.info(f"[RATE] {process_key}: {col_key} (col {col_idx}) = {sample_values}")
                 else:
                     logging.warning(f"Column index {col_idx} for {col_key} is out of bounds. DataFrame has {len(df.columns)} columns.")
                     process_data[col_key] = []
@@ -625,7 +455,7 @@ class PPRQProcessor:
                     
                     # DEBUG: Show rate calculation details
                     if "Rate" in sum_key or "rate" in sum_key.lower():
-                        logging.info(f"🎯 DEBUG {process_key}: {sum_key} calculation:")
+                        logging.info(f"[DEBUG] {process_key}: {sum_key} calculation:")
                         logging.info(f"   - Looking for '{cond_val}' in column {cond_col_idx}")
                         logging.info(f"   - Found {len(matching_rows)} matching rows")
                         if len(matching_rows) > 0:
@@ -636,31 +466,65 @@ class PPRQProcessor:
                             logging.info(f"   - Will divide by: {sum_config['divide_by']}")
                         logging.info(f"   - Final result: {total / sum_config.get('divide_by', 1) if 'divide_by' in sum_config else total}")
             
-                # Smart division logic based on actual data timespan
-                if "divide_by" in sum_config:
-                    original_divisor = sum_config["divide_by"]
+                # Store the raw total before any division (this is the actual volume/hours)
+                raw_total = total
+                
+                # For PPR_PRU, ALWAYS extract and store the actual volumes and hours from the data
+                if process_key == "PPR_PRU" and ("Rate" in sum_key or "rate" in sum_key.lower()):
+                    # Get the condition to find the matching row
+                    cond_col_idx, cond_val = sum_config["condition"]
+                    matching_rows = df[df.iloc[:, cond_col_idx] == cond_val]
                     
-                    # Calculate actual timespan of the data to determine proper scaling
-                    data_timespan_hours = (self.end_datetime - self.start_datetime).total_seconds() / 3600
-                    shift_hours = 12  # Standard shift duration
-                    
-                    # If we're using historical fallback data (detected by large row count or timespan > 24 hours)
-                    if len(df) > 1000 or data_timespan_hours > 24:
-                        # Historical data is typically weekly (168 hours) or multi-day
-                        # Scale down to shift level (12 hours)
-                        if data_timespan_hours > 24:
-                            # Weekly or multi-day data - scale to shift
-                            scaling_factor = shift_hours / data_timespan_hours
-                            total *= scaling_factor
-                            logging.info(f"PPR_Q: Historical data ({len(df)} rows, {data_timespan_hours:.1f}h), scaling by {scaling_factor:.4f} for {sum_key}")
-                        else:
-                            # Use original PPR division logic for other historical cases
-                            if original_divisor != 0:
-                                total /= original_divisor
-                            logging.info(f"PPR_Q: Historical data ({len(df)} rows), dividing by {original_divisor} for {sum_key}")
-                    else:
-                        # Current shift data - no scaling needed
-                        logging.info(f"PPR_Q: Current shift data ({len(df)} rows, {data_timespan_hours:.1f}h), no scaling for {sum_key}")
+                    if len(matching_rows) > 0:
+                        # Extract actual volume from column 7 and hours from column 8
+                        actual_volume = matching_rows.iloc[0, 7] if len(matching_rows.columns) > 7 else 0
+                        actual_hours = matching_rows.iloc[0, 8] if len(matching_rows.columns) > 8 else 0
+                        
+                        # Store the actual values
+                        base_key = sum_key.replace("PRU_", "").replace("Rate", "").replace("rate", "")
+                        volume_key = f"PRU_{base_key}_Volume"
+                        hours_key = f"PRU_{base_key}_Hours"
+                        
+                        process_data[volume_key] = float(actual_volume)
+                        process_data[hours_key] = float(actual_hours)
+                        
+                        logging.info(f"PPR_Q: Stored actual values for {sum_key}:")
+                        logging.info(f"   - {volume_key} = {actual_volume}")
+                        logging.info(f"   - {hours_key} = {actual_hours}")
+                        logging.info(f"   - Current total = {total}")
+                        
+                        # For PPR_PRU, we should use the actual rate from column 9, not divide by anything
+                        actual_rate = matching_rows.iloc[0, 9] if len(matching_rows.columns) > 9 else total
+                        total = float(actual_rate)
+                        
+                        logging.info(f"   - Using actual rate from column 9: {actual_rate}")
+                        
+                        # Verify the calculation: rate should equal volume/hours
+                        if actual_hours > 0:
+                            calculated_rate = actual_volume / actual_hours
+                            logging.info(f"   - Verification: {actual_volume} / {actual_hours} = {calculated_rate}")
+                            if abs(calculated_rate - total) > 0.01:  # Allow small rounding differences
+                                logging.warning(f"   - Rate mismatch! Expected {calculated_rate}, got {total}")
+                
+                # Apply divide_by logic ONLY for non-PPR_PRU processes
+                elif "divide_by" in sum_config:
+                    divisor = sum_config["divide_by"]
+                    if divisor != 0:
+                        total /= divisor
+                        logging.info(f"PPR_Q: Applied divide_by {divisor} for {sum_key}: {total}")
+                else:
+                    # For rates without divide_by, calculate as volume/hours if we have both
+                    if "Rate" in sum_key or "rate" in sum_key.lower():
+                        # Try to find corresponding volume and hours
+                        volume_key = sum_key.replace("Rate", "Volume").replace("rate", "Volume")
+                        hours_key = sum_key.replace("Rate", "Hours").replace("rate", "Hours")
+                        
+                        if volume_key in process_data and hours_key in process_data:
+                            volume = process_data[volume_key]
+                            hours = process_data[hours_key]
+                            if hours > 0:
+                                total = volume / hours
+                                logging.info(f"PPR_Q: Calculated rate {sum_key} = {volume} / {hours} = {total}")
 
                 process_data[sum_key] = float(total)
 
@@ -719,17 +583,63 @@ class PPRQProcessor:
         """
         logging.info('Starting PPR_Q processing...')
         logging.info(f'Site: {self.site}')
-        logging.info(f'Time range: {self.start_datetime} to {self.end_datetime}')
+        logging.info(f'Time range: {self.sos_datetime} to {self.eos_datetime}')
         
         self.process_all_processes()
+        
+        # Calculate comprehensive target metrics
+        self._calculate_comprehensive_metrics()
         
         # Add metadata about the run
         self.PPR_Q_JSON['_metadata'] = {
             'site': self.site,
-            'start_datetime': self.start_datetime.isoformat(),
-            'end_datetime': self.end_datetime.isoformat(),
+            'sos_datetime': self.sos_datetime.isoformat(),
+            'eos_datetime': self.eos_datetime.isoformat(),
             'execution_time_seconds': self.execution_time
         }
         
         logging.info('PPR_Q processing completed.')
         return self.PPR_Q_JSON
+    
+    def _calculate_comprehensive_metrics(self):
+        """
+        Calculate ALL target metrics using the modular calculators.
+        """
+        # Import the modular calculators
+        from .metrics_calculator import enhance_ppr_q_with_all_metrics
+        from .size_calculator import add_size_metrics_to_ppr_q
+        
+        logging.info("Calculating comprehensive target metrics...")
+        
+        # Add all target metrics
+        self.PPR_Q_JSON = enhance_ppr_q_with_all_metrics(self.PPR_Q_JSON)
+        
+        # Add size-specific metrics using raw DataFrames
+        self.PPR_Q_JSON = add_size_metrics_to_ppr_q(self.PPR_Q_JSON, self.raw_dataframes)
+        
+        # Clean up NaN values before returning
+        self._clean_nan_values()
+    
+    def _clean_nan_values(self):
+        """
+        Recursively clean NaN values from the PPR_Q_JSON, replacing them with empty strings.
+        """
+        import math
+        import numpy as np
+        
+        def clean_value(value):
+            """Clean a single value, converting NaN to empty string."""
+            if isinstance(value, float) and (math.isnan(value) or np.isnan(value)):
+                return ""
+            elif isinstance(value, str) and value == "NaN":
+                return ""
+            elif isinstance(value, dict):
+                return {k: clean_value(v) for k, v in value.items()}
+            elif isinstance(value, list):
+                return [clean_value(item) for item in value]
+            else:
+                return value
+        
+        logging.info("Cleaning NaN values from PPR_Q output...")
+        self.PPR_Q_JSON = clean_value(self.PPR_Q_JSON)
+        logging.info("NaN cleanup completed.")

@@ -15,6 +15,7 @@ from data_processing.process_rc_sort_data import process_rc_sort_data
 from data_processing.process_carrier_matrix_data import process_carrier_matrix_data 
 from data_processing.process_sspot_data import process_sspot_data
 from data_processing.process_scacs_mapping_data import process_scacs_mapping_data
+from data_processing.process_spark_snapshot_data import process_spark_snapshot_data
 from data_processing.process_vip_data import process_vip_data
 from data_processing.process_ibbt_data import process_ibbt_data  # Add IBBT import
 
@@ -50,6 +51,8 @@ def process_data(func_name, raw_data, start_datetime=None, end_datetime=None):
         return process_sspot_data(raw_data)
     elif func_name == 'SCACs':
         return process_scacs_mapping_data(raw_data)
+    elif func_name == 'SPARK':
+        return process_spark_snapshot_data(raw_data)
     elif func_name == 'ALPS_RC_Sort':
         return process_rc_sort_data(raw_data)
     elif func_name == 'QuipCSV':

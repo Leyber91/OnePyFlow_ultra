@@ -1,0 +1,355 @@
+Process Name,Function Name,Employee Type,Employee Id,Name,Manager,"Paid Hours-Small(function,employee)","Paid Hours-Medium(function,employee)","Paid Hours-Large(function,employee)","Paid Hours-HeavyBulky(function,employee)","Paid Hours-Total(function,employee)",Job Action,Jobs,JPH,Unit Type,Size,Units,UPH
+Each-Receive,ReceiveUniversal.INT,AMZN,109805022,"Delgado Catanaima,Laurent Esperanza","Abion Buil,Pablo",0.11,0.39,0.07,0,0.56,EachReceived,47,83.97,EACH,Small,83,788.39
+Each-Receive,ReceiveUniversal.INT,AMZN,109805022,"Delgado Catanaima,Laurent Esperanza","Abion Buil,Pablo",0.11,0.39,0.07,0,0.56,EachReceived,47,83.97,EACH,Medium,123,317.42
+Each-Receive,ReceiveUniversal.INT,AMZN,109805022,"Delgado Catanaima,Laurent Esperanza","Abion Buil,Pablo",0.11,0.39,0.07,0,0.56,EachReceived,47,83.97,EACH,Large,9,135.56
+Each-Receive,ReceiveUniversal.INT,AMZN,109805022,"Delgado Catanaima,Laurent Esperanza","Abion Buil,Pablo",0.11,0.39,0.07,0,0.56,EachReceived,47,83.97,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,109805022,"Delgado Catanaima,Laurent Esperanza","Abion Buil,Pablo",0.11,0.39,0.07,0,0.56,EachReceived,47,83.97,EACH,Total,215,384.12
+Each-Receive,ReceiveUniversal.INT,AMZN,109805022,"Delgado Catanaima,Laurent Esperanza","Abion Buil,Pablo",0.11,0.39,0.07,0,0.56,EachReceived,47,83.97,Job,Total,47,83.97
+Each-Receive,ReceiveUniversal.INT,AMZN,112648344,"Galindo Garcia,Leonardo Jose Leo","Casas,Elena",0.13,0.04,0,0,0.16,EachReceived,19,116.92,EACH,Small,17,135.4
+Each-Receive,ReceiveUniversal.INT,AMZN,112648344,"Galindo Garcia,Leonardo Jose Leo","Casas,Elena",0.13,0.04,0,0,0.16,EachReceived,19,116.92,EACH,Medium,2,54.55
+Each-Receive,ReceiveUniversal.INT,AMZN,112648344,"Galindo Garcia,Leonardo Jose Leo","Casas,Elena",0.13,0.04,0,0,0.16,EachReceived,19,116.92,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,112648344,"Galindo Garcia,Leonardo Jose Leo","Casas,Elena",0.13,0.04,0,0,0.16,EachReceived,19,116.92,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,112648344,"Galindo Garcia,Leonardo Jose Leo","Casas,Elena",0.13,0.04,0,0,0.16,EachReceived,19,116.92,EACH,Total,19,116.92
+Each-Receive,ReceiveUniversal.INT,AMZN,112648344,"Galindo Garcia,Leonardo Jose Leo","Casas,Elena",0.13,0.04,0,0,0.16,EachReceived,19,116.92,Job,Total,19,116.92
+Each-Receive,ReceiveUniversal.INT,AMZN,201197409,"Zeghlaoui,Wahi","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Small,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201197409,"Zeghlaoui,Wahi","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Medium,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201197409,"Zeghlaoui,Wahi","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201197409,"Zeghlaoui,Wahi","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201197409,"Zeghlaoui,Wahi","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Total,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201197409,"Zeghlaoui,Wahi","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,Job,Total,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201214603,"Romero Naranjo,Maria Gabriela","Orga Nebra,Paula",0.12,0.6,0,0,0.72,EachReceived,30,41.46,EACH,Small,18,144.97
+Each-Receive,ReceiveUniversal.INT,AMZN,201214603,"Romero Naranjo,Maria Gabriela","Orga Nebra,Paula",0.12,0.6,0,0,0.72,EachReceived,30,41.46,EACH,Medium,35,58.41
+Each-Receive,ReceiveUniversal.INT,AMZN,201214603,"Romero Naranjo,Maria Gabriela","Orga Nebra,Paula",0.12,0.6,0,0,0.72,EachReceived,30,41.46,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201214603,"Romero Naranjo,Maria Gabriela","Orga Nebra,Paula",0.12,0.6,0,0,0.72,EachReceived,30,41.46,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201214603,"Romero Naranjo,Maria Gabriela","Orga Nebra,Paula",0.12,0.6,0,0,0.72,EachReceived,30,41.46,EACH,Total,53,73.24
+Each-Receive,ReceiveUniversal.INT,AMZN,201214603,"Romero Naranjo,Maria Gabriela","Orga Nebra,Paula",0.12,0.6,0,0,0.72,EachReceived,30,41.46,Job,Total,30,41.46
+Each-Receive,ReceiveUniversal.INT,AMZN,201214612,"Lloclla Fernandez,Keyla Cecilia","Orga Nebra,Paula",0.1,1.79,0,0,1.89,EachReceived,192,101.56,EACH,Small,48,470.84
+Each-Receive,ReceiveUniversal.INT,AMZN,201214612,"Lloclla Fernandez,Keyla Cecilia","Orga Nebra,Paula",0.1,1.79,0,0,1.89,EachReceived,192,101.56,EACH,Medium,339,189.56
+Each-Receive,ReceiveUniversal.INT,AMZN,201214612,"Lloclla Fernandez,Keyla Cecilia","Orga Nebra,Paula",0.1,1.79,0,0,1.89,EachReceived,192,101.56,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201214612,"Lloclla Fernandez,Keyla Cecilia","Orga Nebra,Paula",0.1,1.79,0,0,1.89,EachReceived,192,101.56,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201214612,"Lloclla Fernandez,Keyla Cecilia","Orga Nebra,Paula",0.1,1.79,0,0,1.89,EachReceived,192,101.56,EACH,Total,387,204.7
+Each-Receive,ReceiveUniversal.INT,AMZN,201214612,"Lloclla Fernandez,Keyla Cecilia","Orga Nebra,Paula",0.1,1.79,0,0,1.89,EachReceived,192,101.56,Job,Total,192,101.56
+Each-Receive,ReceiveUniversal.INT,AMZN,201236124,"Miguel Garcia,Alvaro","Cortés Escartín,Isabel",0.65,1.68,0.2,0,2.53,EachReceived,219,86.71,EACH,Small,190,292.06
+Each-Receive,ReceiveUniversal.INT,AMZN,201236124,"Miguel Garcia,Alvaro","Cortés Escartín,Isabel",0.65,1.68,0.2,0,2.53,EachReceived,219,86.71,EACH,Medium,197,117.61
+Each-Receive,ReceiveUniversal.INT,AMZN,201236124,"Miguel Garcia,Alvaro","Cortés Escartín,Isabel",0.65,1.68,0.2,0,2.53,EachReceived,219,86.71,EACH,Large,10,50.07
+Each-Receive,ReceiveUniversal.INT,AMZN,201236124,"Miguel Garcia,Alvaro","Cortés Escartín,Isabel",0.65,1.68,0.2,0,2.53,EachReceived,219,86.71,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201236124,"Miguel Garcia,Alvaro","Cortés Escartín,Isabel",0.65,1.68,0.2,0,2.53,EachReceived,219,86.71,EACH,Total,397,157.19
+Each-Receive,ReceiveUniversal.INT,AMZN,201236124,"Miguel Garcia,Alvaro","Cortés Escartín,Isabel",0.65,1.68,0.2,0,2.53,EachReceived,219,86.71,Job,Total,218,86.32
+Each-Receive,ReceiveUniversal.INT,AMZN,201285147,"Sentilles,Alan Christian","Casas,Elena",0.05,0,0,0,0.05,EachReceived,1,18.56,EACH,Small,1,18.56
+Each-Receive,ReceiveUniversal.INT,AMZN,201285147,"Sentilles,Alan Christian","Casas,Elena",0.05,0,0,0,0.05,EachReceived,1,18.56,EACH,Medium,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285147,"Sentilles,Alan Christian","Casas,Elena",0.05,0,0,0,0.05,EachReceived,1,18.56,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285147,"Sentilles,Alan Christian","Casas,Elena",0.05,0,0,0,0.05,EachReceived,1,18.56,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285147,"Sentilles,Alan Christian","Casas,Elena",0.05,0,0,0,0.05,EachReceived,1,18.56,EACH,Total,1,18.56
+Each-Receive,ReceiveUniversal.INT,AMZN,201285147,"Sentilles,Alan Christian","Casas,Elena",0.05,0,0,0,0.05,EachReceived,1,18.56,Job,Total,1,18.56
+Each-Receive,ReceiveUniversal.INT,AMZN,201285151,"Ordonez,Dayana Nicole","Cortés Escartín,Isabel",0,0.47,0,0,0.47,EachReceived,33,69.68,EACH,Small,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285151,"Ordonez,Dayana Nicole","Cortés Escartín,Isabel",0,0.47,0,0,0.47,EachReceived,33,69.68,EACH,Medium,160,337.83
+Each-Receive,ReceiveUniversal.INT,AMZN,201285151,"Ordonez,Dayana Nicole","Cortés Escartín,Isabel",0,0.47,0,0,0.47,EachReceived,33,69.68,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285151,"Ordonez,Dayana Nicole","Cortés Escartín,Isabel",0,0.47,0,0,0.47,EachReceived,33,69.68,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285151,"Ordonez,Dayana Nicole","Cortés Escartín,Isabel",0,0.47,0,0,0.47,EachReceived,33,69.68,EACH,Total,160,337.83
+Each-Receive,ReceiveUniversal.INT,AMZN,201285151,"Ordonez,Dayana Nicole","Cortés Escartín,Isabel",0,0.47,0,0,0.47,EachReceived,33,69.68,Job,Total,33,69.68
+Each-Receive,ReceiveUniversal.INT,AMZN,201285236,"Funes Jimenez,Maria Belen","Orga Nebra,Paula",0.95,0.83,0,0,1.78,EachReceived,160,89.99,EACH,Small,346,364.96
+Each-Receive,ReceiveUniversal.INT,AMZN,201285236,"Funes Jimenez,Maria Belen","Orga Nebra,Paula",0.95,0.83,0,0,1.78,EachReceived,160,89.99,EACH,Medium,122,147.04
+Each-Receive,ReceiveUniversal.INT,AMZN,201285236,"Funes Jimenez,Maria Belen","Orga Nebra,Paula",0.95,0.83,0,0,1.78,EachReceived,160,89.99,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285236,"Funes Jimenez,Maria Belen","Orga Nebra,Paula",0.95,0.83,0,0,1.78,EachReceived,160,89.99,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285236,"Funes Jimenez,Maria Belen","Orga Nebra,Paula",0.95,0.83,0,0,1.78,EachReceived,160,89.99,EACH,Total,468,263.21
+Each-Receive,ReceiveUniversal.INT,AMZN,201285236,"Funes Jimenez,Maria Belen","Orga Nebra,Paula",0.95,0.83,0,0,1.78,EachReceived,160,89.99,Job,Total,159,89.42
+Each-Receive,ReceiveUniversal.INT,AMZN,201285475,"Laya Herrera,Linda Mercedes","Cortés Escartín,Isabel",0.22,3.04,0.07,0,3.33,EachReceived,585,175.7,EACH,Small,101,466.75
+Each-Receive,ReceiveUniversal.INT,AMZN,201285475,"Laya Herrera,Linda Mercedes","Cortés Escartín,Isabel",0.22,3.04,0.07,0,3.33,EachReceived,585,175.7,EACH,Medium,571,187.97
+Each-Receive,ReceiveUniversal.INT,AMZN,201285475,"Laya Herrera,Linda Mercedes","Cortés Escartín,Isabel",0.22,3.04,0.07,0,3.33,EachReceived,585,175.7,EACH,Large,6,80.3
+Each-Receive,ReceiveUniversal.INT,AMZN,201285475,"Laya Herrera,Linda Mercedes","Cortés Escartín,Isabel",0.22,3.04,0.07,0,3.33,EachReceived,585,175.7,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285475,"Laya Herrera,Linda Mercedes","Cortés Escartín,Isabel",0.22,3.04,0.07,0,3.33,EachReceived,585,175.7,EACH,Total,678,203.64
+Each-Receive,ReceiveUniversal.INT,AMZN,201285475,"Laya Herrera,Linda Mercedes","Cortés Escartín,Isabel",0.22,3.04,0.07,0,3.33,EachReceived,585,175.7,Job,Total,584,175.4
+Each-Receive,ReceiveUniversal.INT,AMZN,201285481,"CERRO BERDEJO,ADRIAN","Cortés Escartín,Isabel",1.91,0.61,0,0,2.51,EachReceived,549,218.53,EACH,Small,671,352.13
+Each-Receive,ReceiveUniversal.INT,AMZN,201285481,"CERRO BERDEJO,ADRIAN","Cortés Escartín,Isabel",1.91,0.61,0,0,2.51,EachReceived,549,218.53,EACH,Medium,86,141.82
+Each-Receive,ReceiveUniversal.INT,AMZN,201285481,"CERRO BERDEJO,ADRIAN","Cortés Escartín,Isabel",1.91,0.61,0,0,2.51,EachReceived,549,218.53,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285481,"CERRO BERDEJO,ADRIAN","Cortés Escartín,Isabel",1.91,0.61,0,0,2.51,EachReceived,549,218.53,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285481,"CERRO BERDEJO,ADRIAN","Cortés Escartín,Isabel",1.91,0.61,0,0,2.51,EachReceived,549,218.53,EACH,Total,757,301.33
+Each-Receive,ReceiveUniversal.INT,AMZN,201285481,"CERRO BERDEJO,ADRIAN","Cortés Escartín,Isabel",1.91,0.61,0,0,2.51,EachReceived,549,218.53,Job,Total,549,218.53
+Each-Receive,ReceiveUniversal.INT,AMZN,201285534,"Bautista Fernandez,Miguel Angel","Casas,Elena",0,0,0,0,0.01,EachReceived,4,720,EACH,Small,2,1440
+Each-Receive,ReceiveUniversal.INT,AMZN,201285534,"Bautista Fernandez,Miguel Angel","Casas,Elena",0,0,0,0,0.01,EachReceived,4,720,EACH,Medium,2,514.29
+Each-Receive,ReceiveUniversal.INT,AMZN,201285534,"Bautista Fernandez,Miguel Angel","Casas,Elena",0,0,0,0,0.01,EachReceived,4,720,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285534,"Bautista Fernandez,Miguel Angel","Casas,Elena",0,0,0,0,0.01,EachReceived,4,720,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201285534,"Bautista Fernandez,Miguel Angel","Casas,Elena",0,0,0,0,0.01,EachReceived,4,720,EACH,Total,4,720
+Each-Receive,ReceiveUniversal.INT,AMZN,201285534,"Bautista Fernandez,Miguel Angel","Casas,Elena",0,0,0,0,0.01,EachReceived,4,720,Job,Total,4,720
+Each-Receive,ReceiveUniversal.INT,TEMP,201305398,"Lausin,Eduardo","Casas,Elena",0,0.17,0,0,0.17,EachReceived,6,36.06,EACH,Small,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,201305398,"Lausin,Eduardo","Casas,Elena",0,0.17,0,0,0.17,EachReceived,6,36.06,EACH,Medium,13,78.13
+Each-Receive,ReceiveUniversal.INT,TEMP,201305398,"Lausin,Eduardo","Casas,Elena",0,0.17,0,0,0.17,EachReceived,6,36.06,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,201305398,"Lausin,Eduardo","Casas,Elena",0,0.17,0,0,0.17,EachReceived,6,36.06,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,201305398,"Lausin,Eduardo","Casas,Elena",0,0.17,0,0,0.17,EachReceived,6,36.06,EACH,Total,13,78.13
+Each-Receive,ReceiveUniversal.INT,TEMP,201305398,"Lausin,Eduardo","Casas,Elena",0,0.17,0,0,0.17,EachReceived,6,36.06,Job,Total,6,36.06
+Each-Receive,ReceiveUniversal.INT,AMZN,201497606,"Vela Lopez,Omar","Casas,Elena",0,0,0.17,0,0.17,EachReceived,4,24.04,EACH,Small,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201497606,"Vela Lopez,Omar","Casas,Elena",0,0,0.17,0,0.17,EachReceived,4,24.04,EACH,Medium,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201497606,"Vela Lopez,Omar","Casas,Elena",0,0,0.17,0,0.17,EachReceived,4,24.04,EACH,Large,4,24.04
+Each-Receive,ReceiveUniversal.INT,AMZN,201497606,"Vela Lopez,Omar","Casas,Elena",0,0,0.17,0,0.17,EachReceived,4,24.04,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,201497606,"Vela Lopez,Omar","Casas,Elena",0,0,0.17,0,0.17,EachReceived,4,24.04,EACH,Total,4,24.04
+Each-Receive,ReceiveUniversal.INT,AMZN,201497606,"Vela Lopez,Omar","Casas,Elena",0,0,0.17,0,0.17,EachReceived,4,24.04,Job,Total,4,24.04
+Each-Receive,ReceiveUniversal.INT,AMZN,202126585,"SANCHEZ MELLADO,CRISTINA","Orga Nebra,Paula",0.86,0.12,0,0,0.99,EachReceived,125,126.55,EACH,Small,806,931.79
+Each-Receive,ReceiveUniversal.INT,AMZN,202126585,"SANCHEZ MELLADO,CRISTINA","Orga Nebra,Paula",0.86,0.12,0,0,0.99,EachReceived,125,126.55,EACH,Medium,46,375.51
+Each-Receive,ReceiveUniversal.INT,AMZN,202126585,"SANCHEZ MELLADO,CRISTINA","Orga Nebra,Paula",0.86,0.12,0,0,0.99,EachReceived,125,126.55,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202126585,"SANCHEZ MELLADO,CRISTINA","Orga Nebra,Paula",0.86,0.12,0,0,0.99,EachReceived,125,126.55,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202126585,"SANCHEZ MELLADO,CRISTINA","Orga Nebra,Paula",0.86,0.12,0,0,0.99,EachReceived,125,126.55,EACH,Total,852,862.54
+Each-Receive,ReceiveUniversal.INT,AMZN,202126585,"SANCHEZ MELLADO,CRISTINA","Orga Nebra,Paula",0.86,0.12,0,0,0.99,EachReceived,125,126.55,Job,Total,124,125.53
+Each-Receive,ReceiveUniversal.INT,AMZN,202427761,"Bravo Bautista,Jenny Alexandra","Orga Nebra,Paula",0.73,0.18,0.01,0,0.92,EachReceived,90,98,EACH,Small,435,596.34
+Each-Receive,ReceiveUniversal.INT,AMZN,202427761,"Bravo Bautista,Jenny Alexandra","Orga Nebra,Paula",0.73,0.18,0.01,0,0.92,EachReceived,90,98,EACH,Medium,43,240.37
+Each-Receive,ReceiveUniversal.INT,AMZN,202427761,"Bravo Bautista,Jenny Alexandra","Orga Nebra,Paula",0.73,0.18,0.01,0,0.92,EachReceived,90,98,EACH,Large,1,102.86
+Each-Receive,ReceiveUniversal.INT,AMZN,202427761,"Bravo Bautista,Jenny Alexandra","Orga Nebra,Paula",0.73,0.18,0.01,0,0.92,EachReceived,90,98,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202427761,"Bravo Bautista,Jenny Alexandra","Orga Nebra,Paula",0.73,0.18,0.01,0,0.92,EachReceived,90,98,EACH,Total,479,521.6
+Each-Receive,ReceiveUniversal.INT,AMZN,202427761,"Bravo Bautista,Jenny Alexandra","Orga Nebra,Paula",0.73,0.18,0.01,0,0.92,EachReceived,90,98,Job,Total,89,96.91
+Each-Receive,ReceiveUniversal.INT,AMZN,202427794,"Alvaro Plaza,Maria del Pilar","Cortés Escartín,Isabel",0,0.46,0,0,0.46,EachReceived,16,34.49,EACH,Small,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202427794,"Alvaro Plaza,Maria del Pilar","Cortés Escartín,Isabel",0,0.46,0,0,0.46,EachReceived,16,34.49,EACH,Medium,16,34.49
+Each-Receive,ReceiveUniversal.INT,AMZN,202427794,"Alvaro Plaza,Maria del Pilar","Cortés Escartín,Isabel",0,0.46,0,0,0.46,EachReceived,16,34.49,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202427794,"Alvaro Plaza,Maria del Pilar","Cortés Escartín,Isabel",0,0.46,0,0,0.46,EachReceived,16,34.49,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202427794,"Alvaro Plaza,Maria del Pilar","Cortés Escartín,Isabel",0,0.46,0,0,0.46,EachReceived,16,34.49,EACH,Total,16,34.49
+Each-Receive,ReceiveUniversal.INT,AMZN,202427794,"Alvaro Plaza,Maria del Pilar","Cortés Escartín,Isabel",0,0.46,0,0,0.46,EachReceived,16,34.49,Job,Total,16,34.49
+Each-Receive,ReceiveUniversal.INT,AMZN,202503237,"Pacheco Gomez,Erlinda","Cortés Escartín,Isabel",0.05,0.07,0,0,0.12,EachReceived,13,108.58,EACH,Small,24,514.29
+Each-Receive,ReceiveUniversal.INT,AMZN,202503237,"Pacheco Gomez,Erlinda","Cortés Escartín,Isabel",0.05,0.07,0,0,0.12,EachReceived,13,108.58,EACH,Medium,15,206.11
+Each-Receive,ReceiveUniversal.INT,AMZN,202503237,"Pacheco Gomez,Erlinda","Cortés Escartín,Isabel",0.05,0.07,0,0,0.12,EachReceived,13,108.58,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202503237,"Pacheco Gomez,Erlinda","Cortés Escartín,Isabel",0.05,0.07,0,0,0.12,EachReceived,13,108.58,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202503237,"Pacheco Gomez,Erlinda","Cortés Escartín,Isabel",0.05,0.07,0,0,0.12,EachReceived,13,108.58,EACH,Total,39,325.75
+Each-Receive,ReceiveUniversal.INT,AMZN,202503237,"Pacheco Gomez,Erlinda","Cortés Escartín,Isabel",0.05,0.07,0,0,0.12,EachReceived,13,108.58,Job,Total,13,108.58
+Each-Receive,ReceiveUniversal.INT,AMZN,202922381,"Garcia Araujo,Yessika Marilyn","Orga Nebra,Paula",0.27,0.71,0.15,0,1.13,EachReceived,104,91.67,EACH,Small,104,386.38
+Each-Receive,ReceiveUniversal.INT,AMZN,202922381,"Garcia Araujo,Yessika Marilyn","Orga Nebra,Paula",0.27,0.71,0.15,0,1.13,EachReceived,104,91.67,EACH,Medium,111,155.49
+Each-Receive,ReceiveUniversal.INT,AMZN,202922381,"Garcia Araujo,Yessika Marilyn","Orga Nebra,Paula",0.27,0.71,0.15,0,1.13,EachReceived,104,91.67,EACH,Large,10,66.3
+Each-Receive,ReceiveUniversal.INT,AMZN,202922381,"Garcia Araujo,Yessika Marilyn","Orga Nebra,Paula",0.27,0.71,0.15,0,1.13,EachReceived,104,91.67,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202922381,"Garcia Araujo,Yessika Marilyn","Orga Nebra,Paula",0.27,0.71,0.15,0,1.13,EachReceived,104,91.67,EACH,Total,225,198.33
+Each-Receive,ReceiveUniversal.INT,AMZN,202922381,"Garcia Araujo,Yessika Marilyn","Orga Nebra,Paula",0.27,0.71,0.15,0,1.13,EachReceived,104,91.67,Job,Total,103,90.79
+Each-Receive,ReceiveUniversal.INT,AMZN,202939726,"Garcia monzon,Gabriela Del Carmen","Just Cots,Josep",2.49,1.4,0,0,3.89,EachReceived,688,176.76,EACH,Small,846,339.19
+Each-Receive,ReceiveUniversal.INT,AMZN,202939726,"Garcia monzon,Gabriela Del Carmen","Just Cots,Josep",2.49,1.4,0,0,3.89,EachReceived,688,176.76,EACH,Medium,191,136.65
+Each-Receive,ReceiveUniversal.INT,AMZN,202939726,"Garcia monzon,Gabriela Del Carmen","Just Cots,Josep",2.49,1.4,0,0,3.89,EachReceived,688,176.76,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202939726,"Garcia monzon,Gabriela Del Carmen","Just Cots,Josep",2.49,1.4,0,0,3.89,EachReceived,688,176.76,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,202939726,"Garcia monzon,Gabriela Del Carmen","Just Cots,Josep",2.49,1.4,0,0,3.89,EachReceived,688,176.76,EACH,Total,1037,266.43
+Each-Receive,ReceiveUniversal.INT,AMZN,202939726,"Garcia monzon,Gabriela Del Carmen","Just Cots,Josep",2.49,1.4,0,0,3.89,EachReceived,688,176.76,Job,Total,688,176.76
+Each-Receive,ReceiveUniversal.INT,TEMP,203402793,"Veron,Brisa Gabriela","Casas,Elena",0.15,0,0,0,0.15,EachReceived,2,13.77,EACH,Small,5,34.42
+Each-Receive,ReceiveUniversal.INT,TEMP,203402793,"Veron,Brisa Gabriela","Casas,Elena",0.15,0,0,0,0.15,EachReceived,2,13.77,EACH,Medium,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,203402793,"Veron,Brisa Gabriela","Casas,Elena",0.15,0,0,0,0.15,EachReceived,2,13.77,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,203402793,"Veron,Brisa Gabriela","Casas,Elena",0.15,0,0,0,0.15,EachReceived,2,13.77,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,203402793,"Veron,Brisa Gabriela","Casas,Elena",0.15,0,0,0,0.15,EachReceived,2,13.77,EACH,Total,5,34.42
+Each-Receive,ReceiveUniversal.INT,TEMP,203402793,"Veron,Brisa Gabriela","Casas,Elena",0.15,0,0,0,0.15,EachReceived,2,13.77,Job,Total,2,13.77
+Each-Receive,ReceiveUniversal.INT,AMZN,203402799,"Torres,Lucelly","Orga Nebra,Paula",0,0.02,0.62,0,0.63,EachReceived,18,28.38,EACH,Small,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,203402799,"Torres,Lucelly","Orga Nebra,Paula",0,0.02,0.62,0,0.63,EachReceived,18,28.38,EACH,Medium,1,65.45
+Each-Receive,ReceiveUniversal.INT,AMZN,203402799,"Torres,Lucelly","Orga Nebra,Paula",0,0.02,0.62,0,0.63,EachReceived,18,28.38,EACH,Large,17,27.48
+Each-Receive,ReceiveUniversal.INT,AMZN,203402799,"Torres,Lucelly","Orga Nebra,Paula",0,0.02,0.62,0,0.63,EachReceived,18,28.38,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,203402799,"Torres,Lucelly","Orga Nebra,Paula",0,0.02,0.62,0,0.63,EachReceived,18,28.38,EACH,Total,18,28.38
+Each-Receive,ReceiveUniversal.INT,AMZN,203402799,"Torres,Lucelly","Orga Nebra,Paula",0,0.02,0.62,0,0.63,EachReceived,18,28.38,Job,Total,18,28.38
+Each-Receive,ReceiveUniversal.INT,AMZN,203402816,"Jesus,Maria","Orga Nebra,Paula",0.26,0.19,0.04,0,0.49,EachReceived,68,137.76,EACH,Small,67,260.19
+Each-Receive,ReceiveUniversal.INT,AMZN,203402816,"Jesus,Maria","Orga Nebra,Paula",0.26,0.19,0.04,0,0.49,EachReceived,68,137.76,EACH,Medium,20,104.8
+Each-Receive,ReceiveUniversal.INT,AMZN,203402816,"Jesus,Maria","Orga Nebra,Paula",0.26,0.19,0.04,0,0.49,EachReceived,68,137.76,EACH,Large,2,44.72
+Each-Receive,ReceiveUniversal.INT,AMZN,203402816,"Jesus,Maria","Orga Nebra,Paula",0.26,0.19,0.04,0,0.49,EachReceived,68,137.76,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,203402816,"Jesus,Maria","Orga Nebra,Paula",0.26,0.19,0.04,0,0.49,EachReceived,68,137.76,EACH,Total,89,180.3
+Each-Receive,ReceiveUniversal.INT,AMZN,203402816,"Jesus,Maria","Orga Nebra,Paula",0.26,0.19,0.04,0,0.49,EachReceived,68,137.76,Job,Total,66,133.71
+Each-Receive,ReceiveUniversal.INT,AMZN,203765695,"Merizalde Verdezoto,Erika Vanessa","Cortés Escartín,Isabel",2.19,1.58,0.01,0,3.78,EachReceived,861,227.96,EACH,Small,1042,476.65
+Each-Receive,ReceiveUniversal.INT,AMZN,203765695,"Merizalde Verdezoto,Erika Vanessa","Cortés Escartín,Isabel",2.19,1.58,0.01,0,3.78,EachReceived,861,227.96,EACH,Medium,303,191.97
+Each-Receive,ReceiveUniversal.INT,AMZN,203765695,"Merizalde Verdezoto,Erika Vanessa","Cortés Escartín,Isabel",2.19,1.58,0.01,0,3.78,EachReceived,861,227.96,EACH,Large,1,81.82
+Each-Receive,ReceiveUniversal.INT,AMZN,203765695,"Merizalde Verdezoto,Erika Vanessa","Cortés Escartín,Isabel",2.19,1.58,0.01,0,3.78,EachReceived,861,227.96,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,203765695,"Merizalde Verdezoto,Erika Vanessa","Cortés Escartín,Isabel",2.19,1.58,0.01,0,3.78,EachReceived,861,227.96,EACH,Total,1346,356.37
+Each-Receive,ReceiveUniversal.INT,AMZN,203765695,"Merizalde Verdezoto,Erika Vanessa","Cortés Escartín,Isabel",2.19,1.58,0.01,0,3.78,EachReceived,861,227.96,Job,Total,860,227.7
+Each-Receive,ReceiveUniversal.INT,AMZN,203765865,"Alifonso Esteve,Anna","Orga Nebra,Paula",0.81,0.28,0,0,1.1,EachReceived,180,164.05,EACH,Small,250,307.06
+Each-Receive,ReceiveUniversal.INT,AMZN,203765865,"Alifonso Esteve,Anna","Orga Nebra,Paula",0.81,0.28,0,0,1.1,EachReceived,180,164.05,EACH,Medium,35,123.77
+Each-Receive,ReceiveUniversal.INT,AMZN,203765865,"Alifonso Esteve,Anna","Orga Nebra,Paula",0.81,0.28,0,0,1.1,EachReceived,180,164.05,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,203765865,"Alifonso Esteve,Anna","Orga Nebra,Paula",0.81,0.28,0,0,1.1,EachReceived,180,164.05,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,203765865,"Alifonso Esteve,Anna","Orga Nebra,Paula",0.81,0.28,0,0,1.1,EachReceived,180,164.05,EACH,Total,285,259.75
+Each-Receive,ReceiveUniversal.INT,AMZN,203765865,"Alifonso Esteve,Anna","Orga Nebra,Paula",0.81,0.28,0,0,1.1,EachReceived,180,164.05,Job,Total,180,164.05
+Each-Receive,ReceiveUniversal.INT,TEMP,203805221,"Perez Martin,Miguel","Orga Nebra,Paula",1.6,1.93,0.85,0,4.39,EachReceived,408,93,EACH,Small,472,294.39
+Each-Receive,ReceiveUniversal.INT,TEMP,203805221,"Perez Martin,Miguel","Orga Nebra,Paula",1.6,1.93,0.85,0,4.39,EachReceived,408,93,EACH,Medium,229,118.57
+Each-Receive,ReceiveUniversal.INT,TEMP,203805221,"Perez Martin,Miguel","Orga Nebra,Paula",1.6,1.93,0.85,0,4.39,EachReceived,408,93,EACH,Large,43,50.47
+Each-Receive,ReceiveUniversal.INT,TEMP,203805221,"Perez Martin,Miguel","Orga Nebra,Paula",1.6,1.93,0.85,0,4.39,EachReceived,408,93,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,203805221,"Perez Martin,Miguel","Orga Nebra,Paula",1.6,1.93,0.85,0,4.39,EachReceived,408,93,EACH,Total,744,169.58
+Each-Receive,ReceiveUniversal.INT,TEMP,203805221,"Perez Martin,Miguel","Orga Nebra,Paula",1.6,1.93,0.85,0,4.39,EachReceived,408,93,Job,Total,408,93
+Each-Receive,ReceiveUniversal.INT,TEMP,204136861,"pena,laura","Orga Nebra,Paula",1.53,3.71,0.01,0,5.25,EachReceived,797,151.78,EACH,Small,737,481
+Each-Receive,ReceiveUniversal.INT,TEMP,204136861,"pena,laura","Orga Nebra,Paula",1.53,3.71,0.01,0,5.25,EachReceived,797,151.78,EACH,Medium,718,193.72
+Each-Receive,ReceiveUniversal.INT,TEMP,204136861,"pena,laura","Orga Nebra,Paula",1.53,3.71,0.01,0,5.25,EachReceived,797,151.78,EACH,Large,1,83.72
+Each-Receive,ReceiveUniversal.INT,TEMP,204136861,"pena,laura","Orga Nebra,Paula",1.53,3.71,0.01,0,5.25,EachReceived,797,151.78,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,204136861,"pena,laura","Orga Nebra,Paula",1.53,3.71,0.01,0,5.25,EachReceived,797,151.78,EACH,Total,1456,277.27
+Each-Receive,ReceiveUniversal.INT,TEMP,204136861,"pena,laura","Orga Nebra,Paula",1.53,3.71,0.01,0,5.25,EachReceived,797,151.78,Job,Total,796,151.59
+Each-Receive,ReceiveUniversal.INT,AMZN,204191541,"Galvez Chueca,Zaira","Orga Nebra,Paula",1.36,0.94,0,0,2.3,EachReceived,343,149.15,EACH,Small,592,436.63
+Each-Receive,ReceiveUniversal.INT,AMZN,204191541,"Galvez Chueca,Zaira","Orga Nebra,Paula",1.36,0.94,0,0,2.3,EachReceived,343,149.15,EACH,Medium,166,175.92
+Each-Receive,ReceiveUniversal.INT,AMZN,204191541,"Galvez Chueca,Zaira","Orga Nebra,Paula",1.36,0.94,0,0,2.3,EachReceived,343,149.15,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204191541,"Galvez Chueca,Zaira","Orga Nebra,Paula",1.36,0.94,0,0,2.3,EachReceived,343,149.15,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204191541,"Galvez Chueca,Zaira","Orga Nebra,Paula",1.36,0.94,0,0,2.3,EachReceived,343,149.15,EACH,Total,758,329.61
+Each-Receive,ReceiveUniversal.INT,AMZN,204191541,"Galvez Chueca,Zaira","Orga Nebra,Paula",1.36,0.94,0,0,2.3,EachReceived,343,149.15,Job,Total,343,149.15
+Each-Receive,ReceiveUniversal.INT,AMZN,204191967,"Rangel,Katherine","Cortés Escartín,Isabel",1.86,0.96,0,0,2.82,EachReceived,453,160.56,EACH,Small,761,408.77
+Each-Receive,ReceiveUniversal.INT,AMZN,204191967,"Rangel,Katherine","Cortés Escartín,Isabel",1.86,0.96,0,0,2.82,EachReceived,453,160.56,EACH,Medium,158,164.68
+Each-Receive,ReceiveUniversal.INT,AMZN,204191967,"Rangel,Katherine","Cortés Escartín,Isabel",1.86,0.96,0,0,2.82,EachReceived,453,160.56,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204191967,"Rangel,Katherine","Cortés Escartín,Isabel",1.86,0.96,0,0,2.82,EachReceived,453,160.56,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204191967,"Rangel,Katherine","Cortés Escartín,Isabel",1.86,0.96,0,0,2.82,EachReceived,453,160.56,EACH,Total,919,325.73
+Each-Receive,ReceiveUniversal.INT,AMZN,204191967,"Rangel,Katherine","Cortés Escartín,Isabel",1.86,0.96,0,0,2.82,EachReceived,453,160.56,Job,Total,453,160.56
+Each-Receive,ReceiveUniversal.INT,AMZN,204192008,"GUEDEZ,MERCYS GLORIELA","Cortés Escartín,Isabel",0.11,0.33,0.01,0,0.45,EachReceived,50,111.11,EACH,Small,55,495
+Each-Receive,ReceiveUniversal.INT,AMZN,204192008,"GUEDEZ,MERCYS GLORIELA","Cortés Escartín,Isabel",0.11,0.33,0.01,0,0.45,EachReceived,50,111.11,EACH,Medium,65,198.98
+Each-Receive,ReceiveUniversal.INT,AMZN,204192008,"GUEDEZ,MERCYS GLORIELA","Cortés Escartín,Isabel",0.11,0.33,0.01,0,0.45,EachReceived,50,111.11,EACH,Large,1,85.71
+Each-Receive,ReceiveUniversal.INT,AMZN,204192008,"GUEDEZ,MERCYS GLORIELA","Cortés Escartín,Isabel",0.11,0.33,0.01,0,0.45,EachReceived,50,111.11,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204192008,"GUEDEZ,MERCYS GLORIELA","Cortés Escartín,Isabel",0.11,0.33,0.01,0,0.45,EachReceived,50,111.11,EACH,Total,121,268.89
+Each-Receive,ReceiveUniversal.INT,AMZN,204192008,"GUEDEZ,MERCYS GLORIELA","Cortés Escartín,Isabel",0.11,0.33,0.01,0,0.45,EachReceived,50,111.11,Job,Total,49,108.89
+Each-Receive,ReceiveUniversal.INT,AMZN,204239903,"Ferreira Fuentes,Fredy Alberto","Orga Nebra,Paula",2.14,1.8,0,0,3.94,EachReceived,933,236.89,EACH,Small,1061,495.73
+Each-Receive,ReceiveUniversal.INT,AMZN,204239903,"Ferreira Fuentes,Fredy Alberto","Orga Nebra,Paula",2.14,1.8,0,0,3.94,EachReceived,933,236.89,EACH,Medium,359,199.66
+Each-Receive,ReceiveUniversal.INT,AMZN,204239903,"Ferreira Fuentes,Fredy Alberto","Orga Nebra,Paula",2.14,1.8,0,0,3.94,EachReceived,933,236.89,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204239903,"Ferreira Fuentes,Fredy Alberto","Orga Nebra,Paula",2.14,1.8,0,0,3.94,EachReceived,933,236.89,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204239903,"Ferreira Fuentes,Fredy Alberto","Orga Nebra,Paula",2.14,1.8,0,0,3.94,EachReceived,933,236.89,EACH,Total,1420,360.53
+Each-Receive,ReceiveUniversal.INT,AMZN,204239903,"Ferreira Fuentes,Fredy Alberto","Orga Nebra,Paula",2.14,1.8,0,0,3.94,EachReceived,933,236.89,Job,Total,933,236.89
+Each-Receive,ReceiveUniversal.INT,AMZN,204367251,"Ceballos,Jhon","Casas,Elena",0.1,0.07,0,0,0.17,EachReceived,37,222.37,EACH,Small,36,366.1
+Each-Receive,ReceiveUniversal.INT,AMZN,204367251,"Ceballos,Jhon","Casas,Elena",0.1,0.07,0,0,0.17,EachReceived,37,222.37,EACH,Medium,10,147.54
+Each-Receive,ReceiveUniversal.INT,AMZN,204367251,"Ceballos,Jhon","Casas,Elena",0.1,0.07,0,0,0.17,EachReceived,37,222.37,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204367251,"Ceballos,Jhon","Casas,Elena",0.1,0.07,0,0,0.17,EachReceived,37,222.37,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,AMZN,204367251,"Ceballos,Jhon","Casas,Elena",0.1,0.07,0,0,0.17,EachReceived,37,222.37,EACH,Total,46,276.46
+Each-Receive,ReceiveUniversal.INT,AMZN,204367251,"Ceballos,Jhon","Casas,Elena",0.1,0.07,0,0,0.17,EachReceived,37,222.37,Job,Total,37,222.37
+Each-Receive,ReceiveUniversal.INT,TEMP,205115816,"Gonzalez,Nansy","Orga Nebra,Paula",1.73,2.26,0.39,0,4.37,EachReceived,486,111.25,EACH,Small,652,377.61
+Each-Receive,ReceiveUniversal.INT,TEMP,205115816,"Gonzalez,Nansy","Orga Nebra,Paula",1.73,2.26,0.39,0,4.37,EachReceived,486,111.25,EACH,Medium,343,152.09
+Each-Receive,ReceiveUniversal.INT,TEMP,205115816,"Gonzalez,Nansy","Orga Nebra,Paula",1.73,2.26,0.39,0,4.37,EachReceived,486,111.25,EACH,Large,25,64.75
+Each-Receive,ReceiveUniversal.INT,TEMP,205115816,"Gonzalez,Nansy","Orga Nebra,Paula",1.73,2.26,0.39,0,4.37,EachReceived,486,111.25,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205115816,"Gonzalez,Nansy","Orga Nebra,Paula",1.73,2.26,0.39,0,4.37,EachReceived,486,111.25,EACH,Total,1020,233.48
+Each-Receive,ReceiveUniversal.INT,TEMP,205115816,"Gonzalez,Nansy","Orga Nebra,Paula",1.73,2.26,0.39,0,4.37,EachReceived,486,111.25,Job,Total,486,111.25
+Each-Receive,ReceiveUniversal.INT,TEMP,205174586,"Zapata Guerrero,Laura Fernanda","Cortés Escartín,Isabel",3.02,2.78,0.09,0,5.89,EachReceived,612,103.86,EACH,Small,990,327.57
+Each-Receive,ReceiveUniversal.INT,TEMP,205174586,"Zapata Guerrero,Laura Fernanda","Cortés Escartín,Isabel",3.02,2.78,0.09,0,5.89,EachReceived,612,103.86,EACH,Medium,367,131.95
+Each-Receive,ReceiveUniversal.INT,TEMP,205174586,"Zapata Guerrero,Laura Fernanda","Cortés Escartín,Isabel",3.02,2.78,0.09,0,5.89,EachReceived,612,103.86,EACH,Large,5,56.25
+Each-Receive,ReceiveUniversal.INT,TEMP,205174586,"Zapata Guerrero,Laura Fernanda","Cortés Escartín,Isabel",3.02,2.78,0.09,0,5.89,EachReceived,612,103.86,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205174586,"Zapata Guerrero,Laura Fernanda","Cortés Escartín,Isabel",3.02,2.78,0.09,0,5.89,EachReceived,612,103.86,EACH,Total,1362,231.13
+Each-Receive,ReceiveUniversal.INT,TEMP,205174586,"Zapata Guerrero,Laura Fernanda","Cortés Escartín,Isabel",3.02,2.78,0.09,0,5.89,EachReceived,612,103.86,Job,Total,609,103.35
+Each-Receive,ReceiveUniversal.INT,TEMP,205363999,"Jiménez Amaya,Claudia Marcela","Cortés Escartín,Isabel",4.03,2.23,0.21,0,6.47,EachReceived,1198,185.15,EACH,Small,1883,467.5
+Each-Receive,ReceiveUniversal.INT,TEMP,205363999,"Jiménez Amaya,Claudia Marcela","Cortés Escartín,Isabel",4.03,2.23,0.21,0,6.47,EachReceived,1198,185.15,EACH,Medium,420,188.32
+Each-Receive,ReceiveUniversal.INT,TEMP,205363999,"Jiménez Amaya,Claudia Marcela","Cortés Escartín,Isabel",4.03,2.23,0.21,0,6.47,EachReceived,1198,185.15,EACH,Large,17,80.21
+Each-Receive,ReceiveUniversal.INT,TEMP,205363999,"Jiménez Amaya,Claudia Marcela","Cortés Escartín,Isabel",4.03,2.23,0.21,0,6.47,EachReceived,1198,185.15,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205363999,"Jiménez Amaya,Claudia Marcela","Cortés Escartín,Isabel",4.03,2.23,0.21,0,6.47,EachReceived,1198,185.15,EACH,Total,2320,358.55
+Each-Receive,ReceiveUniversal.INT,TEMP,205363999,"Jiménez Amaya,Claudia Marcela","Cortés Escartín,Isabel",4.03,2.23,0.21,0,6.47,EachReceived,1198,185.15,Job,Total,1198,185.15
+Each-Receive,ReceiveUniversal.INT,TEMP,205364017,"Fernandez,Raquel","Cortés Escartín,Isabel",2.04,2.01,0.08,0,4.13,EachReceived,776,187.98,EACH,Small,1042,511.34
+Each-Receive,ReceiveUniversal.INT,TEMP,205364017,"Fernandez,Raquel","Cortés Escartín,Isabel",2.04,2.01,0.08,0,4.13,EachReceived,776,187.98,EACH,Medium,414,205.97
+Each-Receive,ReceiveUniversal.INT,TEMP,205364017,"Fernandez,Raquel","Cortés Escartín,Isabel",2.04,2.01,0.08,0,4.13,EachReceived,776,187.98,EACH,Large,7,87.8
+Each-Receive,ReceiveUniversal.INT,TEMP,205364017,"Fernandez,Raquel","Cortés Escartín,Isabel",2.04,2.01,0.08,0,4.13,EachReceived,776,187.98,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205364017,"Fernandez,Raquel","Cortés Escartín,Isabel",2.04,2.01,0.08,0,4.13,EachReceived,776,187.98,EACH,Total,1463,354.4
+Each-Receive,ReceiveUniversal.INT,TEMP,205364017,"Fernandez,Raquel","Cortés Escartín,Isabel",2.04,2.01,0.08,0,4.13,EachReceived,776,187.98,Job,Total,775,187.74
+Each-Receive,ReceiveUniversal.INT,TEMP,205364029,"Arias,Luciana Cedeno","Cortés Escartín,Isabel",1.78,1.2,0.26,0,3.24,EachReceived,358,110.47,EACH,Small,516,290.66
+Each-Receive,ReceiveUniversal.INT,TEMP,205364029,"Arias,Luciana Cedeno","Cortés Escartín,Isabel",1.78,1.2,0.26,0,3.24,EachReceived,358,110.47,EACH,Medium,141,117.07
+Each-Receive,ReceiveUniversal.INT,TEMP,205364029,"Arias,Luciana Cedeno","Cortés Escartín,Isabel",1.78,1.2,0.26,0,3.24,EachReceived,358,110.47,EACH,Large,13,49.84
+Each-Receive,ReceiveUniversal.INT,TEMP,205364029,"Arias,Luciana Cedeno","Cortés Escartín,Isabel",1.78,1.2,0.26,0,3.24,EachReceived,358,110.47,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205364029,"Arias,Luciana Cedeno","Cortés Escartín,Isabel",1.78,1.2,0.26,0,3.24,EachReceived,358,110.47,EACH,Total,670,206.74
+Each-Receive,ReceiveUniversal.INT,TEMP,205364029,"Arias,Luciana Cedeno","Cortés Escartín,Isabel",1.78,1.2,0.26,0,3.24,EachReceived,358,110.47,Job,Total,358,110.47
+Each-Receive,ReceiveUniversal.INT,TEMP,205364043,"Barysevich,Natalia","Orga Nebra,Paula",1.79,1.82,0.25,0,3.86,EachReceived,505,130.85,EACH,Small,805,449.58
+Each-Receive,ReceiveUniversal.INT,TEMP,205364043,"Barysevich,Natalia","Orga Nebra,Paula",1.79,1.82,0.25,0,3.86,EachReceived,505,130.85,EACH,Medium,330,181.1
+Each-Receive,ReceiveUniversal.INT,TEMP,205364043,"Barysevich,Natalia","Orga Nebra,Paula",1.79,1.82,0.25,0,3.86,EachReceived,505,130.85,EACH,Large,19,77.11
+Each-Receive,ReceiveUniversal.INT,TEMP,205364043,"Barysevich,Natalia","Orga Nebra,Paula",1.79,1.82,0.25,0,3.86,EachReceived,505,130.85,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205364043,"Barysevich,Natalia","Orga Nebra,Paula",1.79,1.82,0.25,0,3.86,EachReceived,505,130.85,EACH,Total,1154,299.01
+Each-Receive,ReceiveUniversal.INT,TEMP,205364043,"Barysevich,Natalia","Orga Nebra,Paula",1.79,1.82,0.25,0,3.86,EachReceived,505,130.85,Job,Total,503,130.33
+Each-Receive,ReceiveUniversal.INT,TEMP,205364079,"Camilo Jimenez,Elizabeth Altagracia Altagracia","Cortés Escartín,Isabel",1.55,0.38,0,0,1.93,EachReceived,449,233.04,EACH,Small,615,396.56
+Each-Receive,ReceiveUniversal.INT,TEMP,205364079,"Camilo Jimenez,Elizabeth Altagracia Altagracia","Cortés Escartín,Isabel",1.55,0.38,0,0,1.93,EachReceived,449,233.04,EACH,Medium,60,159.76
+Each-Receive,ReceiveUniversal.INT,TEMP,205364079,"Camilo Jimenez,Elizabeth Altagracia Altagracia","Cortés Escartín,Isabel",1.55,0.38,0,0,1.93,EachReceived,449,233.04,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205364079,"Camilo Jimenez,Elizabeth Altagracia Altagracia","Cortés Escartín,Isabel",1.55,0.38,0,0,1.93,EachReceived,449,233.04,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205364079,"Camilo Jimenez,Elizabeth Altagracia Altagracia","Cortés Escartín,Isabel",1.55,0.38,0,0,1.93,EachReceived,449,233.04,EACH,Total,675,350.35
+Each-Receive,ReceiveUniversal.INT,TEMP,205364079,"Camilo Jimenez,Elizabeth Altagracia Altagracia","Cortés Escartín,Isabel",1.55,0.38,0,0,1.93,EachReceived,449,233.04,Job,Total,449,233.04
+Each-Receive,ReceiveUniversal.INT,TEMP,205404650,"Ansuh Bommo,Savina","Cortés Escartín,Isabel",2.42,2.63,0.85,0,5.9,EachReceived,926,157,EACH,Small,866,357.4
+Each-Receive,ReceiveUniversal.INT,TEMP,205404650,"Ansuh Bommo,Savina","Cortés Escartín,Isabel",2.42,2.63,0.85,0,5.9,EachReceived,926,157,EACH,Medium,378,143.95
+Each-Receive,ReceiveUniversal.INT,TEMP,205404650,"Ansuh Bommo,Savina","Cortés Escartín,Isabel",2.42,2.63,0.85,0,5.9,EachReceived,926,157,EACH,Large,52,61.28
+Each-Receive,ReceiveUniversal.INT,TEMP,205404650,"Ansuh Bommo,Savina","Cortés Escartín,Isabel",2.42,2.63,0.85,0,5.9,EachReceived,926,157,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404650,"Ansuh Bommo,Savina","Cortés Escartín,Isabel",2.42,2.63,0.85,0,5.9,EachReceived,926,157,EACH,Total,1296,219.73
+Each-Receive,ReceiveUniversal.INT,TEMP,205404650,"Ansuh Bommo,Savina","Cortés Escartín,Isabel",2.42,2.63,0.85,0,5.9,EachReceived,926,157,Job,Total,926,157
+Each-Receive,ReceiveUniversal.INT,TEMP,205404652,"Daniela,Patricia","Orga Nebra,Paula",0.14,0.32,0.11,0,0.56,EachReceived,64,113.72,EACH,Small,59,435.25
+Each-Receive,ReceiveUniversal.INT,TEMP,205404652,"Daniela,Patricia","Orga Nebra,Paula",0.14,0.32,0.11,0,0.56,EachReceived,64,113.72,EACH,Medium,56,175.15
+Each-Receive,ReceiveUniversal.INT,TEMP,205404652,"Daniela,Patricia","Orga Nebra,Paula",0.14,0.32,0.11,0,0.56,EachReceived,64,113.72,EACH,Large,8,74.61
+Each-Receive,ReceiveUniversal.INT,TEMP,205404652,"Daniela,Patricia","Orga Nebra,Paula",0.14,0.32,0.11,0,0.56,EachReceived,64,113.72,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404652,"Daniela,Patricia","Orga Nebra,Paula",0.14,0.32,0.11,0,0.56,EachReceived,64,113.72,EACH,Total,123,218.56
+Each-Receive,ReceiveUniversal.INT,TEMP,205404652,"Daniela,Patricia","Orga Nebra,Paula",0.14,0.32,0.11,0,0.56,EachReceived,64,113.72,Job,Total,64,113.72
+Each-Receive,ReceiveUniversal.INT,TEMP,205404653,"Zuluaga,Jose","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Small,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404653,"Zuluaga,Jose","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Medium,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404653,"Zuluaga,Jose","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404653,"Zuluaga,Jose","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404653,"Zuluaga,Jose","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,EACH,Total,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404653,"Zuluaga,Jose","Casas,Elena",0,0,0,0,0.17,EachReceived,0,0,Job,Total,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404661,"Ledesma,Noemi N Ledesma","Casas,Elena",0.11,0.06,0,0,0.17,EachReceived,12,72.12,EACH,Small,10,90
+Each-Receive,ReceiveUniversal.INT,TEMP,205404661,"Ledesma,Noemi N Ledesma","Casas,Elena",0.11,0.06,0,0,0.17,EachReceived,12,72.12,EACH,Medium,2,36.36
+Each-Receive,ReceiveUniversal.INT,TEMP,205404661,"Ledesma,Noemi N Ledesma","Casas,Elena",0.11,0.06,0,0,0.17,EachReceived,12,72.12,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404661,"Ledesma,Noemi N Ledesma","Casas,Elena",0.11,0.06,0,0,0.17,EachReceived,12,72.12,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404661,"Ledesma,Noemi N Ledesma","Casas,Elena",0.11,0.06,0,0,0.17,EachReceived,12,72.12,EACH,Total,12,72.12
+Each-Receive,ReceiveUniversal.INT,TEMP,205404661,"Ledesma,Noemi N Ledesma","Casas,Elena",0.11,0.06,0,0,0.17,EachReceived,12,72.12,Job,Total,12,72.12
+Each-Receive,ReceiveUniversal.INT,TEMP,205404671,"rosales,crhistian Eduardo","Casas,Elena",0.11,0,0.06,0,0.17,EachReceived,15,90.15,EACH,Small,45,411.17
+Each-Receive,ReceiveUniversal.INT,TEMP,205404671,"rosales,crhistian Eduardo","Casas,Elena",0.11,0,0.06,0,0.17,EachReceived,15,90.15,EACH,Medium,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404671,"rosales,crhistian Eduardo","Casas,Elena",0.11,0,0.06,0,0.17,EachReceived,15,90.15,EACH,Large,4,70.59
+Each-Receive,ReceiveUniversal.INT,TEMP,205404671,"rosales,crhistian Eduardo","Casas,Elena",0.11,0,0.06,0,0.17,EachReceived,15,90.15,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404671,"rosales,crhistian Eduardo","Casas,Elena",0.11,0,0.06,0,0.17,EachReceived,15,90.15,EACH,Total,49,294.49
+Each-Receive,ReceiveUniversal.INT,TEMP,205404671,"rosales,crhistian Eduardo","Casas,Elena",0.11,0,0.06,0,0.17,EachReceived,15,90.15,Job,Total,15,90.15
+Each-Receive,ReceiveUniversal.INT,TEMP,205404675,"Duque,Amy Jannine","Cortés Escartín,Isabel",3.23,3.03,0.08,0,6.34,EachReceived,965,152.18,EACH,Small,1832,568.01
+Each-Receive,ReceiveUniversal.INT,TEMP,205404675,"Duque,Amy Jannine","Cortés Escartín,Isabel",3.23,3.03,0.08,0,6.34,EachReceived,965,152.18,EACH,Medium,694,228.79
+Each-Receive,ReceiveUniversal.INT,TEMP,205404675,"Duque,Amy Jannine","Cortés Escartín,Isabel",3.23,3.03,0.08,0,6.34,EachReceived,965,152.18,EACH,Large,8,97.63
+Each-Receive,ReceiveUniversal.INT,TEMP,205404675,"Duque,Amy Jannine","Cortés Escartín,Isabel",3.23,3.03,0.08,0,6.34,EachReceived,965,152.18,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404675,"Duque,Amy Jannine","Cortés Escartín,Isabel",3.23,3.03,0.08,0,6.34,EachReceived,965,152.18,EACH,Total,2534,399.61
+Each-Receive,ReceiveUniversal.INT,TEMP,205404675,"Duque,Amy Jannine","Cortés Escartín,Isabel",3.23,3.03,0.08,0,6.34,EachReceived,965,152.18,Job,Total,965,152.18
+Each-Receive,ReceiveUniversal.INT,TEMP,205404688,"Castejon,Ivan Alonso","Cortés Escartín,Isabel",2.51,2.49,0.14,0,5.14,EachReceived,715,139.04,EACH,Small,916,365.55
+Each-Receive,ReceiveUniversal.INT,TEMP,205404688,"Castejon,Ivan Alonso","Cortés Escartín,Isabel",2.51,2.49,0.14,0,5.14,EachReceived,715,139.04,EACH,Medium,367,147.24
+Each-Receive,ReceiveUniversal.INT,TEMP,205404688,"Castejon,Ivan Alonso","Cortés Escartín,Isabel",2.51,2.49,0.14,0,5.14,EachReceived,715,139.04,EACH,Large,9,62.67
+Each-Receive,ReceiveUniversal.INT,TEMP,205404688,"Castejon,Ivan Alonso","Cortés Escartín,Isabel",2.51,2.49,0.14,0,5.14,EachReceived,715,139.04,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205404688,"Castejon,Ivan Alonso","Cortés Escartín,Isabel",2.51,2.49,0.14,0,5.14,EachReceived,715,139.04,EACH,Total,1292,251.24
+Each-Receive,ReceiveUniversal.INT,TEMP,205404688,"Castejon,Ivan Alonso","Cortés Escartín,Isabel",2.51,2.49,0.14,0,5.14,EachReceived,715,139.04,Job,Total,714,138.84
+Each-Receive,ReceiveUniversal.INT,TEMP,205453760,"Chavarria,Belkis","Orga Nebra,Paula",0.57,0.83,0,0,1.41,EachReceived,335,237.96,EACH,Small,271,471.3
+Each-Receive,ReceiveUniversal.INT,TEMP,205453760,"Chavarria,Belkis","Orga Nebra,Paula",0.57,0.83,0,0,1.41,EachReceived,335,237.96,EACH,Medium,158,189.79
+Each-Receive,ReceiveUniversal.INT,TEMP,205453760,"Chavarria,Belkis","Orga Nebra,Paula",0.57,0.83,0,0,1.41,EachReceived,335,237.96,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205453760,"Chavarria,Belkis","Orga Nebra,Paula",0.57,0.83,0,0,1.41,EachReceived,335,237.96,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205453760,"Chavarria,Belkis","Orga Nebra,Paula",0.57,0.83,0,0,1.41,EachReceived,335,237.96,EACH,Total,429,304.74
+Each-Receive,ReceiveUniversal.INT,TEMP,205453760,"Chavarria,Belkis","Orga Nebra,Paula",0.57,0.83,0,0,1.41,EachReceived,335,237.96,Job,Total,335,237.96
+Each-Receive,ReceiveUniversal.INT,TEMP,205453763,"Angelini,Rey","Orga Nebra,Paula",1.58,0.46,0,0,2.04,EachReceived,133,65.17,EACH,Small,632,400.92
+Each-Receive,ReceiveUniversal.INT,TEMP,205453763,"Angelini,Rey","Orga Nebra,Paula",1.58,0.46,0,0,2.04,EachReceived,133,65.17,EACH,Medium,75,161.58
+Each-Receive,ReceiveUniversal.INT,TEMP,205453763,"Angelini,Rey","Orga Nebra,Paula",1.58,0.46,0,0,2.04,EachReceived,133,65.17,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205453763,"Angelini,Rey","Orga Nebra,Paula",1.58,0.46,0,0,2.04,EachReceived,133,65.17,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205453763,"Angelini,Rey","Orga Nebra,Paula",1.58,0.46,0,0,2.04,EachReceived,133,65.17,EACH,Total,707,346.43
+Each-Receive,ReceiveUniversal.INT,TEMP,205453763,"Angelini,Rey","Orga Nebra,Paula",1.58,0.46,0,0,2.04,EachReceived,133,65.17,Job,Total,133,65.17
+Each-Receive,ReceiveUniversal.INT,TEMP,205453770,"Armero Flor,Leidy alexandra","Orga Nebra,Paula",0.87,1.64,0.12,0,2.64,EachReceived,283,107.37,EACH,Small,245,281.43
+Each-Receive,ReceiveUniversal.INT,TEMP,205453770,"Armero Flor,Leidy alexandra","Orga Nebra,Paula",0.87,1.64,0.12,0,2.64,EachReceived,283,107.37,EACH,Medium,186,113.36
+Each-Receive,ReceiveUniversal.INT,TEMP,205453770,"Armero Flor,Leidy alexandra","Orga Nebra,Paula",0.87,1.64,0.12,0,2.64,EachReceived,283,107.37,EACH,Large,6,48.32
+Each-Receive,ReceiveUniversal.INT,TEMP,205453770,"Armero Flor,Leidy alexandra","Orga Nebra,Paula",0.87,1.64,0.12,0,2.64,EachReceived,283,107.37,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205453770,"Armero Flor,Leidy alexandra","Orga Nebra,Paula",0.87,1.64,0.12,0,2.64,EachReceived,283,107.37,EACH,Total,437,165.79
+Each-Receive,ReceiveUniversal.INT,TEMP,205453770,"Armero Flor,Leidy alexandra","Orga Nebra,Paula",0.87,1.64,0.12,0,2.64,EachReceived,283,107.37,Job,Total,283,107.37
+Each-Receive,ReceiveUniversal.INT,TEMP,205453786,"saif,sara","Just Cots,Josep",0.64,2.09,0.28,0,3.01,EachReceived,314,104.42,EACH,Small,393,618.36
+Each-Receive,ReceiveUniversal.INT,TEMP,205453786,"saif,sara","Just Cots,Josep",0.64,2.09,0.28,0,3.01,EachReceived,314,104.42,EACH,Medium,520,249.04
+Each-Receive,ReceiveUniversal.INT,TEMP,205453786,"saif,sara","Just Cots,Josep",0.64,2.09,0.28,0,3.01,EachReceived,314,104.42,EACH,Large,30,106.09
+Each-Receive,ReceiveUniversal.INT,TEMP,205453786,"saif,sara","Just Cots,Josep",0.64,2.09,0.28,0,3.01,EachReceived,314,104.42,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205453786,"saif,sara","Just Cots,Josep",0.64,2.09,0.28,0,3.01,EachReceived,314,104.42,EACH,Total,943,313.61
+Each-Receive,ReceiveUniversal.INT,TEMP,205453786,"saif,sara","Just Cots,Josep",0.64,2.09,0.28,0,3.01,EachReceived,314,104.42,Job,Total,313,104.09
+Each-Receive,ReceiveUniversal.INT,TEMP,205780089,"Guitierrez,Henry Geovanny","Orga Nebra,Paula",2.31,2.62,0.03,0,4.95,EachReceived,433,87.44,EACH,Small,431,186.98
+Each-Receive,ReceiveUniversal.INT,TEMP,205780089,"Guitierrez,Henry Geovanny","Orga Nebra,Paula",2.31,2.62,0.03,0,4.95,EachReceived,433,87.44,EACH,Medium,197,75.32
+Each-Receive,ReceiveUniversal.INT,TEMP,205780089,"Guitierrez,Henry Geovanny","Orga Nebra,Paula",2.31,2.62,0.03,0,4.95,EachReceived,433,87.44,EACH,Large,1,32.14
+Each-Receive,ReceiveUniversal.INT,TEMP,205780089,"Guitierrez,Henry Geovanny","Orga Nebra,Paula",2.31,2.62,0.03,0,4.95,EachReceived,433,87.44,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780089,"Guitierrez,Henry Geovanny","Orga Nebra,Paula",2.31,2.62,0.03,0,4.95,EachReceived,433,87.44,EACH,Total,629,127.01
+Each-Receive,ReceiveUniversal.INT,TEMP,205780089,"Guitierrez,Henry Geovanny","Orga Nebra,Paula",2.31,2.62,0.03,0,4.95,EachReceived,433,87.44,Job,Total,433,87.44
+Each-Receive,ReceiveUniversal.INT,TEMP,205780097,"Jaen,Olga","Orga Nebra,Paula",2.07,2.27,0.35,0,4.69,EachReceived,697,148.76,EACH,Small,692,334.75
+Each-Receive,ReceiveUniversal.INT,TEMP,205780097,"Jaen,Olga","Orga Nebra,Paula",2.07,2.27,0.35,0,4.69,EachReceived,697,148.76,EACH,Medium,306,134.83
+Each-Receive,ReceiveUniversal.INT,TEMP,205780097,"Jaen,Olga","Orga Nebra,Paula",2.07,2.27,0.35,0,4.69,EachReceived,697,148.76,EACH,Large,20,57.42
+Each-Receive,ReceiveUniversal.INT,TEMP,205780097,"Jaen,Olga","Orga Nebra,Paula",2.07,2.27,0.35,0,4.69,EachReceived,697,148.76,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780097,"Jaen,Olga","Orga Nebra,Paula",2.07,2.27,0.35,0,4.69,EachReceived,697,148.76,EACH,Total,1018,217.28
+Each-Receive,ReceiveUniversal.INT,TEMP,205780097,"Jaen,Olga","Orga Nebra,Paula",2.07,2.27,0.35,0,4.69,EachReceived,697,148.76,Job,Total,694,148.12
+Each-Receive,ReceiveUniversal.INT,TEMP,205780104,"Valderrama,Leidy Norexg","Cortés Escartín,Isabel",3.5,3,0.15,0,6.64,EachReceived,775,116.7,EACH,Small,1225,350.5
+Each-Receive,ReceiveUniversal.INT,TEMP,205780104,"Valderrama,Leidy Norexg","Cortés Escartín,Isabel",3.5,3,0.15,0,6.64,EachReceived,775,116.7,EACH,Medium,423,141.18
+Each-Receive,ReceiveUniversal.INT,TEMP,205780104,"Valderrama,Leidy Norexg","Cortés Escartín,Isabel",3.5,3,0.15,0,6.64,EachReceived,775,116.7,EACH,Large,9,60.11
+Each-Receive,ReceiveUniversal.INT,TEMP,205780104,"Valderrama,Leidy Norexg","Cortés Escartín,Isabel",3.5,3,0.15,0,6.64,EachReceived,775,116.7,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780104,"Valderrama,Leidy Norexg","Cortés Escartín,Isabel",3.5,3,0.15,0,6.64,EachReceived,775,116.7,EACH,Total,1657,249.51
+Each-Receive,ReceiveUniversal.INT,TEMP,205780104,"Valderrama,Leidy Norexg","Cortés Escartín,Isabel",3.5,3,0.15,0,6.64,EachReceived,775,116.7,Job,Total,774,116.55
+Each-Receive,ReceiveUniversal.INT,TEMP,205780105,"FUENTES,Alexander Eduardo","Orga Nebra,Paula",2.45,2.72,0.01,0,5.19,EachReceived,569,109.7,EACH,Small,945,385.32
+Each-Receive,ReceiveUniversal.INT,TEMP,205780105,"FUENTES,Alexander Eduardo","Orga Nebra,Paula",2.45,2.72,0.01,0,5.19,EachReceived,569,109.7,EACH,Medium,422,155.21
+Each-Receive,ReceiveUniversal.INT,TEMP,205780105,"FUENTES,Alexander Eduardo","Orga Nebra,Paula",2.45,2.72,0.01,0,5.19,EachReceived,569,109.7,EACH,Large,1,66.67
+Each-Receive,ReceiveUniversal.INT,TEMP,205780105,"FUENTES,Alexander Eduardo","Orga Nebra,Paula",2.45,2.72,0.01,0,5.19,EachReceived,569,109.7,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780105,"FUENTES,Alexander Eduardo","Orga Nebra,Paula",2.45,2.72,0.01,0,5.19,EachReceived,569,109.7,EACH,Total,1368,263.75
+Each-Receive,ReceiveUniversal.INT,TEMP,205780105,"FUENTES,Alexander Eduardo","Orga Nebra,Paula",2.45,2.72,0.01,0,5.19,EachReceived,569,109.7,Job,Total,568,109.51
+Each-Receive,ReceiveUniversal.INT,TEMP,205780108,"Troconiz,Carolina","Orga Nebra,Paula",2.13,3.64,0.23,0,6.01,EachReceived,994,165.51,EACH,Small,742,348.4
+Each-Receive,ReceiveUniversal.INT,TEMP,205780108,"Troconiz,Carolina","Orga Nebra,Paula",2.13,3.64,0.23,0,6.01,EachReceived,994,165.51,EACH,Medium,511,140.33
+Each-Receive,ReceiveUniversal.INT,TEMP,205780108,"Troconiz,Carolina","Orga Nebra,Paula",2.13,3.64,0.23,0,6.01,EachReceived,994,165.51,EACH,Large,14,59.79
+Each-Receive,ReceiveUniversal.INT,TEMP,205780108,"Troconiz,Carolina","Orga Nebra,Paula",2.13,3.64,0.23,0,6.01,EachReceived,994,165.51,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780108,"Troconiz,Carolina","Orga Nebra,Paula",2.13,3.64,0.23,0,6.01,EachReceived,994,165.51,EACH,Total,1267,210.96
+Each-Receive,ReceiveUniversal.INT,TEMP,205780108,"Troconiz,Carolina","Orga Nebra,Paula",2.13,3.64,0.23,0,6.01,EachReceived,994,165.51,Job,Total,994,165.51
+Each-Receive,ReceiveUniversal.INT,TEMP,205780110,"Domingo Hurtado,Mario","Cortés Escartín,Isabel",0.77,1.71,0,0,2.49,EachReceived,465,186.87,EACH,Small,260,335.97
+Each-Receive,ReceiveUniversal.INT,TEMP,205780110,"Domingo Hurtado,Mario","Cortés Escartín,Isabel",0.77,1.71,0,0,2.49,EachReceived,465,186.87,EACH,Medium,232,135.34
+Each-Receive,ReceiveUniversal.INT,TEMP,205780110,"Domingo Hurtado,Mario","Cortés Escartín,Isabel",0.77,1.71,0,0,2.49,EachReceived,465,186.87,EACH,Large,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780110,"Domingo Hurtado,Mario","Cortés Escartín,Isabel",0.77,1.71,0,0,2.49,EachReceived,465,186.87,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780110,"Domingo Hurtado,Mario","Cortés Escartín,Isabel",0.77,1.71,0,0,2.49,EachReceived,465,186.87,EACH,Total,492,197.72
+Each-Receive,ReceiveUniversal.INT,TEMP,205780110,"Domingo Hurtado,Mario","Cortés Escartín,Isabel",0.77,1.71,0,0,2.49,EachReceived,465,186.87,Job,Total,465,186.87
+Each-Receive,ReceiveUniversal.INT,TEMP,205780117,"Areas,Jason","Cortés Escartín,Isabel",2.01,2.8,0.18,0,5,EachReceived,455,91.08,EACH,Small,646,320.91
+Each-Receive,ReceiveUniversal.INT,TEMP,205780117,"Areas,Jason","Cortés Escartín,Isabel",2.01,2.8,0.18,0,5,EachReceived,455,91.08,EACH,Medium,362,129.26
+Each-Receive,ReceiveUniversal.INT,TEMP,205780117,"Areas,Jason","Cortés Escartín,Isabel",2.01,2.8,0.18,0,5,EachReceived,455,91.08,EACH,Large,10,55.05
+Each-Receive,ReceiveUniversal.INT,TEMP,205780117,"Areas,Jason","Cortés Escartín,Isabel",2.01,2.8,0.18,0,5,EachReceived,455,91.08,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780117,"Areas,Jason","Cortés Escartín,Isabel",2.01,2.8,0.18,0,5,EachReceived,455,91.08,EACH,Total,1018,203.78
+Each-Receive,ReceiveUniversal.INT,TEMP,205780117,"Areas,Jason","Cortés Escartín,Isabel",2.01,2.8,0.18,0,5,EachReceived,455,91.08,Job,Total,455,91.08
+Each-Receive,ReceiveUniversal.INT,TEMP,205780127,"Gonzalez,Carlos Gabriel","Cortés Escartín,Isabel",1.89,3.41,0.1,0,5.4,EachReceived,366,67.74,EACH,Small,533,282.34
+Each-Receive,ReceiveUniversal.INT,TEMP,205780127,"Gonzalez,Carlos Gabriel","Cortés Escartín,Isabel",1.89,3.41,0.1,0,5.4,EachReceived,366,67.74,EACH,Medium,388,113.72
+Each-Receive,ReceiveUniversal.INT,TEMP,205780127,"Gonzalez,Carlos Gabriel","Cortés Escartín,Isabel",1.89,3.41,0.1,0,5.4,EachReceived,366,67.74,EACH,Large,5,48.52
+Each-Receive,ReceiveUniversal.INT,TEMP,205780127,"Gonzalez,Carlos Gabriel","Cortés Escartín,Isabel",1.89,3.41,0.1,0,5.4,EachReceived,366,67.74,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780127,"Gonzalez,Carlos Gabriel","Cortés Escartín,Isabel",1.89,3.41,0.1,0,5.4,EachReceived,366,67.74,EACH,Total,926,171.38
+Each-Receive,ReceiveUniversal.INT,TEMP,205780127,"Gonzalez,Carlos Gabriel","Cortés Escartín,Isabel",1.89,3.41,0.1,0,5.4,EachReceived,366,67.74,Job,Total,366,67.74
+Each-Receive,ReceiveUniversal.INT,TEMP,205780128,"Ojuel Alcázar,Diego","Cortés Escartín,Isabel",3.15,1.99,0.02,0,5.15,EachReceived,712,138.13,EACH,Small,986,313.32
+Each-Receive,ReceiveUniversal.INT,TEMP,205780128,"Ojuel Alcázar,Diego","Cortés Escartín,Isabel",3.15,1.99,0.02,0,5.15,EachReceived,712,138.13,EACH,Medium,251,126.2
+Each-Receive,ReceiveUniversal.INT,TEMP,205780128,"Ojuel Alcázar,Diego","Cortés Escartín,Isabel",3.15,1.99,0.02,0,5.15,EachReceived,712,138.13,EACH,Large,1,53.73
+Each-Receive,ReceiveUniversal.INT,TEMP,205780128,"Ojuel Alcázar,Diego","Cortés Escartín,Isabel",3.15,1.99,0.02,0,5.15,EachReceived,712,138.13,EACH,HeavyBulky,0,0
+Each-Receive,ReceiveUniversal.INT,TEMP,205780128,"Ojuel Alcázar,Diego","Cortés Escartín,Isabel",3.15,1.99,0.02,0,5.15,EachReceived,712,138.13,EACH,Total,1238,240.17
+Each-Receive,ReceiveUniversal.INT,TEMP,205780128,"Ojuel Alcázar,Diego","Cortés Escartín,Isabel",3.15,1.99,0.02,0,5.15,EachReceived,712,138.13,Job,Total,711,137.93
