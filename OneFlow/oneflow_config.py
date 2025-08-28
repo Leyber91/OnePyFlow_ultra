@@ -22,6 +22,7 @@ MODULE_ORDER = [
     "CarrierMatrix", # Carrier Matrix data for FlexSim
     "IBBT",
     "SCACs",     # SCACs Mapping data for FlexSim
+    "SPARK",     # SPARK snapshot data for FlexSim
     "KARIBA",    # Kariba-TSI picked units module
     "DockMaster",
     "DockMasterFiltered",
@@ -57,6 +58,7 @@ STANDALONE_MODULES = [
     "CarrierMatrix",
     "KARIBA",
     "SCACs",
+    "SPARK",  # Added SPARK as standalone module
     "VIP",
     "IBBT",
     "PPR_Q"  # Added PPR_Q as standalone module

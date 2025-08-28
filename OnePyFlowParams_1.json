@@ -1,0 +1,13 @@
+{
+    "Site": "ZAZ1",
+    "plan_type": "SOS",
+    "shift": "ES",
+    "SOSdatetime": "2025-08-25 06:00:00",
+    "EOSdatetime": "2025-08-25 14:30:00",
+    "Modules": [
+        "PPR_Q"
+    ],
+    "GeneratedBy": "OnePyFlow Params Generator V2.0 - Dark Matrix Edition",
+    "GeneratedAt": "2025-08-28T02:28:04.327684",
+    "PPR_Q_Enabled": true
+}

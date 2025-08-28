@@ -379,6 +379,67 @@ def run_standalone_modules(modules, params, auth):
                     "LastRunTimestamp": module_timestamp
                 }
         
+        elif module == "SPARK":
+            try:
+                from data_retrieval.pull_spark_snapshot_data import pull_spark_snapshot_data
+                from data_processing.process_spark_snapshot_data import process_spark_snapshot_data
+                
+                # This module needs FC parameter
+                logger.info(f"Pulling SPARK snapshot data for FC={params.get('Site', 'UNKNOWN')}")
+                raw_data = pull_spark_snapshot_data(
+                    fc=params.get("Site", "UNKNOWN"),
+                    start_date=None,
+                    end_date=None,
+                    session=None,
+                    cookie_jar=None
+                )
+                
+                if raw_data:
+                    # Process the data if pull was successful
+                    spark_data = process_spark_snapshot_data(raw_data)
+                    logger.info(f"Successfully processed SPARK snapshot data: {len(spark_data.get('spark_snapshot', []))} rows")
+                else:
+                    logger.error("Failed to pull SPARK snapshot data")
+                    spark_data = {
+                        "spark_snapshot": [],
+                        "metadata": {
+                            "fc": params.get("Site", "UNKNOWN"),
+                            "timestamp": datetime.now().isoformat(),
+                            "error": "Failed to retrieve SPARK snapshot data",
+                            "row_count": 0,
+                            "carriers": [],
+                            "origin_fcs": []
+                        }
+                    }
+                
+                # Add timestamp metadata 
+                # Use current execution time - will be updated after module completes
+                if isinstance(spark_data, dict) and "metadata" in spark_data:
+                    # Create a separate metadata object
+                    combined_data["SPARK_metadata"] = {
+                        "LastRunTimestamp": module_timestamp,
+                        "ExecutionTimeSeconds": 0,  # Will be updated after module completes
+                        "ExecutionDate": module_timestamp.split("T")[0] if "T" in module_timestamp else module_timestamp
+                    }
+                
+                # Add to combined data
+                combined_data["SPARK"] = spark_data
+                logger.info("SPARK module executed successfully")
+            except Exception as e:
+                logger.error(f"Error executing SPARK module: {e}", exc_info=True)
+                combined_data["SPARK"] = {
+                    "spark_snapshot": [],
+                    "metadata": {
+                        "fc": params.get("Site", "UNKNOWN"),
+                        "timestamp": datetime.now().isoformat(),
+                        "error": str(e),
+                        "row_count": 0,
+                        "carriers": [],
+                        "origin_fcs": [],
+                        "LastRunTimestamp": module_timestamp
+                    }
+                }
+        
         elif module == "SCACs":
             try:
                 from data_retrieval.pull_scacs_mapping_data import pull_scacs_mapping_data
@@ -440,13 +501,23 @@ def run_standalone_modules(modules, params, auth):
 
         elif module == "PPR_Q":
             try:
-                from PPR_Q.PPR_Q_FF import PPR_Q_function
-                # Call with datetime granularity - get from params dictionary
-                ppr_q_data = PPR_Q_function(
-                    Site=params.get("Site", "UNKNOWN"),
-                    start_datetime=params.get("SOSdatetime", ""),
-                    end_datetime=params.get("EOSdatetime", "")
+                from PPR_Q import PPRQProcessor
+                from OneFlow.oneflow_utils import parse_datetime
+                
+                # Parse datetime strings
+                sos_dt = parse_datetime(params.get("SOSdatetime", ""))
+                eos_dt = parse_datetime(params.get("EOSdatetime", ""))
+                
+                if not sos_dt or not eos_dt:
+                    raise ValueError("Invalid SOS/EOS datetime provided")
+                
+                # Create PPRQProcessor and run it
+                ppr_q = PPRQProcessor(
+                    site=params.get("Site", "UNKNOWN"),
+                    sos_datetime=sos_dt,
+                    eos_datetime=eos_dt
                 )
+                ppr_q_data = ppr_q.run()
                 # Always include module in output even if empty
                 combined_data["PPR_Q"] = ppr_q_data or {
                     "total_volume": 0,

@@ -311,7 +311,7 @@ def process_PPR_Transfer_Out(
         (df.iloc[:, unit_idx] == "EACH") &
         (df.iloc[:, size_idx].isin(fluid_sizes))
     )
-    fluid_hours = df.iloc[fluid_mask, hours_idx].sum()
+    fluid_hours = df.loc[fluid_mask, df.columns[hours_idx]].sum()
 
     # 4) Compute the fluids rate
     if fluid_hours > 0:

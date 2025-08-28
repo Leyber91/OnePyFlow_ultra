@@ -4,8 +4,27 @@ from datetime import timedelta
 from data_retrieval.data_retrieval import retrieve_data
 from data_processing.data_processing import process_data, process_ssp_data
 from PPR.PPR_FF import PPRfunction
-from PPR_Q.PPR_Q_FF import PPR_Q_function
+from PPR_Q import PPRQProcessor
 from ALPS import ALPSfunction
+
+def PPR_Q_function(Site, SOSdatetime, EOSdatetime):
+    """
+    Wrapper function for PPRQProcessor to maintain compatibility with existing code.
+    """
+    from datetime import datetime
+    from OneFlow.oneflow_utils import parse_datetime
+    
+    # Parse datetime strings to datetime objects
+    sos_dt = parse_datetime(SOSdatetime) if SOSdatetime else None
+    eos_dt = parse_datetime(EOSdatetime) if EOSdatetime else None
+    
+    if not sos_dt or not eos_dt:
+        logger.error("PPR_Q: Invalid SOS/EOS datetime provided")
+        return {}
+    
+    # Create PPRQProcessor and run it
+    ppr_q = PPRQProcessor(site=Site, sos_datetime=sos_dt, eos_datetime=eos_dt)
+    return ppr_q.run()
 from RODEO import RODEOfunction
 # ULTRA-ENHANCED YMS: 100% traditional quality, 8x faster!
 # from YMS_API.yms_ultra_main import YMSfunction

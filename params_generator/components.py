@@ -285,7 +285,7 @@ class AdvancedModuleSelector(QWidget):
             ],
             "Logistics & Transport": [
                 "DockMaster", "DockMasterFiltered", "DockMaster2", "DockMaster2Filtered",
-                "DockFlow", "YMS", "FMC", "CarrierMatrix", "SCACs"
+                "DockFlow", "YMS", "FMC", "CarrierMatrix", "SCACs", "SPARK"
             ],
             "Operations & Support": [
                 "ALPS_RC_Sort", "ALPSRoster", "QuipCSV", "VIP", "IBBT"
@@ -487,12 +487,13 @@ class ConfigurationPanel(QWidget):
         self.plan_combo.addItems(["Prior-Day", "Next-Shift", "SOS", "Real-Time"])
         self.plan_combo.setStyleSheet(self.site_combo.styleSheet())
         
-        # Shift
+        # Shift with smart presets
         shift_label = QLabel("Shift:")
         shift_label.setStyleSheet(f"color: {DarkMatrixTheme.COLORS['text_primary']}; font-weight: bold;")
         self.shift_combo = QComboBox()
-        self.shift_combo.addItems(["ES", "LS", "NS", "CS", "All-Shifts"])
+        self.shift_combo.addItems(["ES", "LS", "NS", "CS-SAT", "CS-SUN", "Custom"])
         self.shift_combo.setStyleSheet(self.site_combo.styleSheet())
+        self.shift_combo.currentTextChanged.connect(self.on_shift_changed)
         
         site_layout.addWidget(site_label, 0, 0)
         site_layout.addWidget(self.site_combo, 0, 1)
@@ -500,6 +501,9 @@ class ConfigurationPanel(QWidget):
         site_layout.addWidget(self.plan_combo, 1, 1)
         site_layout.addWidget(shift_label, 2, 0)
         site_layout.addWidget(self.shift_combo, 2, 1)
+        
+        # Connect site change to update shift options
+        self.site_combo.currentTextChanged.connect(self.on_site_changed)
         
         layout.addWidget(site_group)
         
@@ -515,23 +519,32 @@ class ConfigurationPanel(QWidget):
         datetime_layout.addWidget(self.sos_widget)
         datetime_layout.addWidget(self.eos_widget)
         
-        # Smart shift buttons
-        shift_buttons = QHBoxLayout()
-        shift_buttons.setSpacing(int(5 * self.scale_factor))
+        # Smart shift preset buttons
+        shift_preset_label = QLabel("Quick Shift Presets:")
+        shift_preset_label.setStyleSheet(f"color: {DarkMatrixTheme.COLORS['text_primary']}; font-weight: bold; margin-top: 10px;")
+        datetime_layout.addWidget(shift_preset_label)
         
-        morning_btn = ModernButton("Morning", "info", scale_factor=self.scale_factor)
-        evening_btn = ModernButton("Evening", "warning", scale_factor=self.scale_factor) 
-        night_btn = ModernButton("Night", "primary", scale_factor=self.scale_factor)
+        # FC-specific shift buttons
+        self.shift_buttons_layout = QGridLayout()
+        self.shift_buttons_layout.setSpacing(int(5 * self.scale_factor))
+        self.create_shift_buttons()
+        datetime_layout.addLayout(self.shift_buttons_layout)
         
-        morning_btn.clicked.connect(lambda: self.set_shift(6, 14))
-        evening_btn.clicked.connect(lambda: self.set_shift(14, 22))
-        night_btn.clicked.connect(lambda: self.set_shift(22, 6, True))
+        # Custom time controls
+        custom_time_layout = QHBoxLayout()
+        custom_time_layout.setSpacing(int(10 * self.scale_factor))
         
-        shift_buttons.addWidget(morning_btn)
-        shift_buttons.addWidget(evening_btn)
-        shift_buttons.addWidget(night_btn)
+        custom_label = QLabel("Custom Times:")
+        custom_label.setStyleSheet(f"color: {DarkMatrixTheme.COLORS['text_secondary']}; font-weight: bold;")
         
-        datetime_layout.addLayout(shift_buttons)
+        reset_btn = ModernButton("Reset to Now", "info", scale_factor=self.scale_factor)
+        reset_btn.clicked.connect(self.reset_to_current_time)
+        
+        custom_time_layout.addWidget(custom_label)
+        custom_time_layout.addStretch()
+        custom_time_layout.addWidget(reset_btn)
+        datetime_layout.addLayout(custom_time_layout)
+        
         layout.addWidget(datetime_group)
         
         # PPR_Q Special Configuration
@@ -579,7 +592,7 @@ class ConfigurationPanel(QWidget):
         """)
         self.ppr_q_enabled.setChecked(True)
         
-        ppr_q_info = QLabel("NEW: Get PPR data with minute-level precision!\nPerfect for detailed shift analysis and real-time monitoring.")
+        ppr_q_info = QLabel("NEW: Get PPR data with minute-level precision!\\nPerfect for detailed shift analysis and real-time monitoring.")
         ppr_q_info.setStyleSheet(f"color: {DarkMatrixTheme.COLORS['ppr_q_highlight']}; font-style: italic; margin: 10px; font-size: {int(12 * self.scale_factor)}px;")
         ppr_q_info.setWordWrap(True)
         
@@ -589,18 +602,147 @@ class ConfigurationPanel(QWidget):
         
         layout.addStretch()
     
-    def set_shift(self, start_hour, end_hour, next_day=False):
-        """Set shift times intelligently"""
+    def create_shift_buttons(self):
+        """Create shift buttons based on current FC"""
+        # Clear existing buttons
+        for i in reversed(range(self.shift_buttons_layout.count())):
+            self.shift_buttons_layout.itemAt(i).widget().setParent(None)
+        
+        fc = self.site_combo.currentText()
+        shifts = self.get_fc_shifts(fc)
+        
+        row = 0
+        col = 0
+        for shift_name, shift_data in shifts.items():
+            btn = ModernButton(f"{shift_name.upper()}", self.get_shift_color(shift_name), scale_factor=self.scale_factor)
+            btn.setToolTip(f"{shift_name}: {shift_data['start']:.2f}h - {shift_data['end']:.2f}h")
+            btn.clicked.connect(lambda checked, s=shift_data: self.set_fc_shift(s))
+            
+            self.shift_buttons_layout.addWidget(btn, row, col)
+            col += 1
+            if col > 2:  # 3 buttons per row
+                col = 0
+                row += 1
+    
+    def get_fc_shifts(self, fc):
+        """Get shift configurations for specific FC"""
+        fc_configs = {
+            'BHX4': {
+                'es': {'start': 7.5, 'end': 18},
+                'ns': {'start': 18.75, 'end': 5.25, 'next_day': True}
+            },
+            'CDG7': {
+                'es': {'start': 5.5, 'end': 13},
+                'ls': {'start': 13.5, 'end': 21},
+                'ns': {'start': 21.5, 'end': 5, 'next_day': True},
+                'cs-sat': {'start': 6, 'end': 18.5},
+                'cs-sun': {'start': 7, 'end': 19.5}
+            },
+            'DTM1': {
+                'es': {'start': 6.25, 'end': 15},
+                'ls': {'start': 15, 'end': 23.75},
+                'ns': {'start': 23.75, 'end': 6.25, 'next_day': True}
+            },
+            'DTM2': {
+                'es': {'start': 6.25, 'end': 15},
+                'ls': {'start': 15, 'end': 23.75},
+                'ns': {'start': 23.75, 'end': 6.25, 'next_day': True}
+            },
+            'HAJ1': {
+                'es': {'start': 6, 'end': 14},
+                'ls': {'start': 14, 'end': 22},
+                'ns': {'start': 22, 'end': 6, 'next_day': True}
+            },
+            'LBA4': {
+                'es': {'start': 7.75, 'end': 18.25},
+                'ns': {'start': 18.75, 'end': 5.5, 'next_day': True}
+            },
+            'TRN3': {
+                'es': {'start': 6, 'end': 14},
+                'ls': {'start': 14.75, 'end': 22.5},
+                'ns': {'start': 22.5, 'end': 6, 'next_day': True}
+            },
+            'WRO5': {
+                'es': {'start': 6.5, 'end': 17},
+                'ns': {'start': 18, 'end': 4.5, 'next_day': True}
+            },
+            'ZAZ1': {
+                'es': {'start': 6, 'end': 14.5},
+                'ls': {'start': 14.5, 'end': 23},
+                'ns': {'start': 23, 'end': 6, 'next_day': True}
+            }
+        }
+        
+        return fc_configs.get(fc, {
+            'es': {'start': 6, 'end': 14},
+            'ls': {'start': 14, 'end': 22},
+            'ns': {'start': 22, 'end': 6, 'next_day': True}
+        })
+    
+    def get_shift_color(self, shift_name):
+        """Get color for shift button"""
+        colors = {
+            'es': 'success',
+            'ls': 'warning', 
+            'ns': 'primary',
+            'cs-sat': 'info',
+            'cs-sun': 'gold'
+        }
+        return colors.get(shift_name, 'primary')
+    
+    def set_fc_shift(self, shift_data):
+        """Set shift times based on FC configuration"""
         current_date = QDateTime.currentDateTime().date()
         
-        sos = QDateTime(current_date, QTime(start_hour, 0))
+        # Convert decimal hours to hours and minutes
+        start_hour = int(shift_data['start'])
+        start_minute = int((shift_data['start'] - start_hour) * 60)
+        end_hour = int(shift_data['end'])
+        end_minute = int((shift_data['end'] - end_hour) * 60)
+        
+        sos = QDateTime(current_date, QTime(start_hour, start_minute))
         self.sos_widget.set_datetime(sos)
         
-        if next_day:
-            eos = QDateTime(current_date.addDays(1), QTime(end_hour, 0))
+        if shift_data.get('next_day', False):
+            eos = QDateTime(current_date.addDays(1), QTime(end_hour, end_minute))
         else:
-            eos = QDateTime(current_date, QTime(end_hour, 0))
+            eos = QDateTime(current_date, QTime(end_hour, end_minute))
         self.eos_widget.set_datetime(eos)
+    
+    def on_site_changed(self, site):
+        """Handle site change to update shift options"""
+        self.create_shift_buttons()
+        
+        # Update shift combo with available shifts for this FC
+        shifts = list(self.get_fc_shifts(site).keys())
+        current_shift = self.shift_combo.currentText()
+        
+        self.shift_combo.clear()
+        self.shift_combo.addItems([s.upper() for s in shifts] + ["Custom"])
+        
+        # Try to maintain current selection if available
+        if current_shift.lower() in shifts:
+            self.shift_combo.setCurrentText(current_shift)
+        else:
+            self.shift_combo.setCurrentIndex(0)
+    
+    def on_shift_changed(self, shift):
+        """Handle shift change to auto-set times"""
+        if shift == "Custom":
+            return
+            
+        fc = self.site_combo.currentText()
+        shifts = self.get_fc_shifts(fc)
+        shift_lower = shift.lower().replace('-', '-')
+        
+        if shift_lower in shifts:
+            self.set_fc_shift(shifts[shift_lower])
+    
+    def reset_to_current_time(self):
+        """Reset times to current time"""
+        current = QDateTime.currentDateTime()
+        self.sos_widget.set_datetime(current.addSecs(-3600))  # 1 hour ago
+        self.eos_widget.set_datetime(current)
     
     def get_config_data(self):
         """Get configuration data"""

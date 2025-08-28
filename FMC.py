@@ -48,15 +48,15 @@ def FMCfunction(Site):
 
     
     urls = {
-        "CDG7": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/mUY2u?view=vrs",
-        "WRO5": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/GpXRo?view=vrs",
-        "LBA4": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/bhY4T?view=vrs",
-        "HAJ1": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/lBYbm?view=vrs",
-        "DTM1": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/fXXSp?view=vrs",
-        "DTM2": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/O2Y6D?view=vrs",
-        "BHX4": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/U6XSa?view=vrs",
-        "ZAZ1": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/eeXSz?view=vrs",
-        "TRN3": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/FfY9C?view=vrs"
+        "CDG7": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/oI10yV?view=vrs",
+        "WRO5": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/0410vi?view=vrs",
+        "LBA4": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/1Y10sQ?view=vrs",
+        "HAJ1": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/n210sU?view=vrs",
+        "DTM1": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/Fk10bB?view=vrs",
+        "DTM2": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/fj10mV?view=vrs",
+        "BHX4": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/9110zl?view=vrs",
+        "ZAZ1": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/sz10iy?view=vrs",
+        "TRN3": "https://trans-logistics-eu.amazon.com/fmc/excel/execution/Am10iy?view=vrs"
     }
 
     ## urls = {

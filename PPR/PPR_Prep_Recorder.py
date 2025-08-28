@@ -22,22 +22,35 @@ CONFIG: Dict[str, Any] = {
             "conditions": [(15, "Total"), (14, "EACH"), (11, "ItemPrepped")],
             "column": 16
         },
-        "ItemPrepped_TotalHours": {
-            "conditions": [(15, "Total"), (14, "EACH"), (11, "ItemPrepped")],
-            "column": 10
-        },
         "PrepAssortment_TotalUnits": {
             "conditions": [(15, "Total"), (14, "EACH"), (11, "PrepAssortment")],
             "column": 16
         },
-        "PrepAssortment_TotalHours": {
-            "conditions": [(15, "Total"), (14, "EACH"), (11, "PrepAssortment")],
-            "column": 10
-        },
-        "PalletReceived_TotalUnits": {
-            "conditions": [(15, "Total"), (14, "EACH"), (11, "PalletReceived")],
+        "EachToted_TotalUnits": {
+            "conditions": [(15, "Total"), (14, "EACH"), (11, "EachToted")],
             "column": 16
         },
+        "PrepOther_TotalUnits": {
+            "conditions": [(15, "Total"), (14, "EACH"), (11, "PrepOther")],
+            "column": 16
+        },
+        "PrepShrinkwrap_TotalUnits": {
+            "conditions": [(15, "Total"), (14, "EACH"), (11, "PrepShrinkwrap")],
+            "column": 16
+        },
+        "PrepStickering_TotalUnits": {
+            "conditions": [(15, "Total"), (14, "EACH"), (11, "PrepStickering")],
+            "column": 16
+        },
+        "PrepResearch_TotalUnits": {
+            "conditions": [(15, "Total"), (14, "EACH"), (11, "PrepResearch")],
+            "column": 16
+        },
+        "PrepOverbox_TotalUnits": {
+            "conditions": [(15, "Total"), (14, "EACH"), (11, "PrepOverbox")],
+            "column": 16
+        },
+        # Removed: PalletReceived doesn't exist in this data
         "SmallsTotal": {
             "conditions": [(15, "Small")],
             "column": 16
